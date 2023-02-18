@@ -346,8 +346,84 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
         <pre><code id="salary-decimal">salary = models.DecimalField(default=0.00,max_digits=9,decimal_places=2)</code></pre>
         <button onclick="copiar('salary-decimal','16')" id="16">Copiar</button>
       </div>
+      <li>
+        Creamos el atributo <b>state</b> para almacenar un estado, el cúal será
+        un <b>booleano (boolean)</b>
+      </li>
+      <div class="codigo">
+        <pre><code id="state-boolean">state = models.BooleanField(default = True)</code></pre>
+        <button onclick="copiar('state-boolean','17')" id="17">Copiar</button>
+      </div>
+      <li>
+        Creamos el atributo <b>avatar</b> para guardar imagenes, en
+        <b>upload_to</b> le digo en que carpeta la va a guardar, si no existe la
+        creara, si le ponemos <b>/%Y/%m/%d</b> es para almacenarlos por fechas,
+        si por ejemplo se sube una imagen el <b>10/02/2023</b>, Django creara
+        una carpeta (dentro de MEDIA_ROOT/avatar), con el año actual (2023),
+        luego dentro, una carpeta con el mes en que se subio la imagen (02), y
+        luego una carpeta con el número del dia (10), y ahi almacenara la
+        imagen, pero sin los <b>/%Y/%m/%d</b>, lo almacenara en la carpeta que
+        le digamos en <b>upload_to</b>
+      </li>
+      <div class="codigo">
+        <pre><code id="image-avatar">avatar = models.ImageField(upload_to = 'avatar/%Y/%m/%d')</code></pre>
+        <button onclick="copiar('image-avatar','18')" id="18">Copiar</button>
+      </div>
+      <li>
+        Creamos el atributo <b>cvitae</b> para almacenar un archivo cualquiera,
+        con <b>null = True</b> le decimo que puede ser nulo con
+        <b>blank = True</b> le decimo que puede estar vacio
+      </li>
+      <div class="codigo">
+        <pre><code id="file-cvitae">cvitae = models.FileField(upload_to = 'cvitae',null = True, blank = True)</code></pre>
+        <button onclick="copiar('file-cvitae','19')" id="19">Copiar</button>
+      </div>
+      <li>
+        La funcion <b>__str___</b> es para mostrar una representacion del algún
+        objeto de la clase o modelo, puede ser el nombre, categoria, etc, por
+        ejemplo de la clase que estamos haciendo:
+      </li>
+      <div class="codigo">
+        <pre><code id="def-str-models">def __str__(self):
+  return f'El nombre: {self.name}'
+</code></pre>
+        <button onclick="copiar('def-str-models','20')" id="20">Copiar</button>
+      </div>
+      <li>
+        La clase <b>Meta</b> dentro del modelo o clase es para definir
+        diferentes datos
+      </li>
+      <ul style="list-style-type: square">
+        <li>
+          El <b>verbose_name</b> es para el registro en singular (empleado, en
+          este caso)
+        </li>
+        <li>
+          El <b>verbose_name_plural</b> es para el registro en plural
+          (empleados, en este caso)
+        </li>
+        <li>
+          El <b>db_table</b> es para el nombre que se le va a poner en la base
+          de datos, si no se le especifica, el pondra el nombre de de la app y
+          luego la clase (erp_empleado en este caso)
+        </li>
+        <li>
+          El <b>ordering</b> es para indicarle que columna (o atributo del
+          modelo) se va a ordenar en la base de datos, si le pongo un
+          <b>"-"</b> invertira el orden
+        </li>
+      </ul>
+      <div class="codigo">
+        <pre><code id="clase-meta">def Meta:
+  verbose_name = 'empleado'
+  verbose_name_plural = 'empleados'
+  db_table = 'empleado'
+  ordering = ['id'] #['-id']
+</code></pre>
+        <button onclick="copiar('clase-meta','21')" id="21">Copiar</button>
+      </div>
     </ul>
-    <h2><i>Video 9</i></h2>
+    <h2><i>Video 9</i>: Modelos | Parte II</h2>
     <h2><i>Video 10</i></h2>
     <h2><i>Video 11</i></h2>
     <h2><i>Video 12</i></h2>
