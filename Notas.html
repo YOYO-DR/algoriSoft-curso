@@ -44,108 +44,114 @@
   </head>
   <body>
     <h1>Curso Django de AlgoriSoft</h1>
-    <h2><i>Video 4</i>: Crear primer proyecto de Django</h2>
-    <p>Se creo con PyCharm</p>
-    <h2><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
-    <ul>
-      <li>
-        Abrir la terminal en VScode con ctrl + ñ o en la carpeta dar clic
-        derecho y seleccionar <b>abrir en terminal</b>
-      </li>
-      <li>Crear un entorno virtual</li>
-      <div class="codigo">
-        <pre><code id="crear-entorno"> python -m venv nombreEntorno</code></pre>
-        <button onclick="copiar('crear-entorno','1')" id="1">Copiar</button>
-      </div>
-      <li>Activar el entorno</li>
-      <div class="codigo">
-        <pre><code id="activar-entorno">nombreEntorno\Scripts\activate</code></pre>
-        <button onclick="copiar('activar-entorno','2')" id="2">Copiar</button>
-      </div>
-      <li>Si se esta utilizando Git Bash, se activa asi</li>
-      <div class="codigo">
-        <pre><code id="activar-entorno-bash">source nombreEntorno/Scripts/activate</code></pre>
-        <button onclick="copiar('activar-entorno-bash','3')" id="3">
-          Copiar
-        </button>
-      </div>
-      <li>Intalar Django</li>
-      <div class="codigo">
-        <pre><code id="instalar-django">pip install django</code></pre>
-        <button onclick="copiar('instalar-django','4')" id="4">Copiar</button>
-      </div>
-      <li>Crear el proyecto a trabajar</li>
-      <div class="codigo">
-        <pre><code id="crear-proyecto">django-admin startproject app</code></pre>
-        <button onclick="copiar('crear-proyecto','5')" id="5">Copiar</button>
-      </div>
-      <li>Entramos a la carpeta del proyecto</li>
-      <div class="codigo">
-        <pre><code id="entrar-app">cd app</code></pre>
-        <button onclick="copiar('entrar-app','6')" id="6">Copiar</button>
-      </div>
-      <li>Ejecutamos el servidor</li>
-      <div class="codigo">
-        <pre><code id="ejecutar-servidor">python manage.py runserver</code></pre>
-        <button onclick="copiar('ejecutar-servidor','7')" id="7">Copiar</button>
-      </div>
-    </ul>
-    <h3>Configurar archivos para trabajar</h3>
-    <ul>
-      <li>
-        Ponemos <b>config</b> a la carpeta donde estan los archivos principales
-        (ejemplo: settings.py)
-      </li>
-      <div class="codigo">
-        <pre><code>app/
+    <section>
+      <h2><i>Video 4</i>: Crear primer proyecto de Django</h2>
+      <p>Se creo con PyCharm</p>
+    </section>
+    <section>
+      <h2><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
+      <ul>
+        <li>
+          Abrir la terminal en VScode con ctrl + ñ o en la carpeta dar clic
+          derecho y seleccionar <b>abrir en terminal</b>
+        </li>
+        <li>Crear un entorno virtual</li>
+        <div class="codigo">
+          <pre><code id="crear-entorno"> python -m venv nombreEntorno</code></pre>
+          <button onclick="copiar('crear-entorno','1')" id="1">Copiar</button>
+        </div>
+        <li>Activar el entorno</li>
+        <div class="codigo">
+          <pre><code id="activar-entorno">nombreEntorno\Scripts\activate</code></pre>
+          <button onclick="copiar('activar-entorno','2')" id="2">Copiar</button>
+        </div>
+        <li>Si se esta utilizando Git Bash, se activa asi</li>
+        <div class="codigo">
+          <pre><code id="activar-entorno-bash">source nombreEntorno/Scripts/activate</code></pre>
+          <button onclick="copiar('activar-entorno-bash','3')" id="3">
+            Copiar
+          </button>
+        </div>
+        <li>Intalar Django</li>
+        <div class="codigo">
+          <pre><code id="instalar-django">pip install django</code></pre>
+          <button onclick="copiar('instalar-django','4')" id="4">Copiar</button>
+        </div>
+        <li>Crear el proyecto a trabajar</li>
+        <div class="codigo">
+          <pre><code id="crear-proyecto">django-admin startproject app</code></pre>
+          <button onclick="copiar('crear-proyecto','5')" id="5">Copiar</button>
+        </div>
+        <li>Entramos a la carpeta del proyecto</li>
+        <div class="codigo">
+          <pre><code id="entrar-app">cd app</code></pre>
+          <button onclick="copiar('entrar-app','6')" id="6">Copiar</button>
+        </div>
+        <li>Ejecutamos el servidor</li>
+        <div class="codigo">
+          <pre><code id="ejecutar-servidor">python manage.py runserver</code></pre>
+          <button onclick="copiar('ejecutar-servidor','7')" id="7">
+            Copiar
+          </button>
+        </div>
+      </ul>
+      <h3>Configurar archivos para trabajar</h3>
+      <ul>
+        <li>
+          Ponemos <b>config</b> a la carpeta donde estan los archivos
+          principales (ejemplo: settings.py)
+        </li>
+        <div class="codigo">
+          <pre><code>app/
   app/ #A esta carpeta le ponemos <i>config</i>
     settings.py
 </code></pre>
-      </div>
+        </div>
 
-      <li>
-        En el archivo asgi.py buscamos <b>app.settings</b> y lo cambiamos a
-        <b>config.settings</b>
-      </li>
-      <div class="codigo">
-        <pre><code>os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+        <li>
+          En el archivo asgi.py buscamos <b>app.settings</b> y lo cambiamos a
+          <b>config.settings</b>
+        </li>
+        <div class="codigo">
+          <pre><code>os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 </code></pre>
-      </div>
-      <li>
-        En el archivo <b>settings.py</b> buscamos la variable
-        <b>ROOT_URLCONFIG</b> y ponemos <b>config.urls</b>
-      </li>
-      <div class="codigo">
-        <pre><code>ROOT_URLCONF = 'config.urls'</code></pre>
-      </div>
-      <li>
-        En el archivo <b>settings.py</b> buscamos la variable
-        <b>WSGI_APPLICATION</b> y lo cambiamos a <b>config.wsgi.applications</b>
-      </li>
-      <div class="codigo">
-        <pre><code>WSGI_APPLICATION = 'config.wsgi.application'</code></pre>
-      </div>
-      <li>
-        En el archivo <b>settings.py</b> buscamos la variable
-        <b>LANGUAGE_CODE</b> y lo cambiamos a <b>es-co</b>, pongo
-        <b>co</b> porque hace referencia a <b>Colombia</b>
-      </li>
-      <div class="codigo">
-        <pre><code>LANGUAGE_CODE = 'es-co'</code></pre>
-      </div>
-      <li>
-        En el archivo <b>wsgi.py</b> buscamos <b>app.settings</b> y lo cambiamos
-        por <b>config.settings</b>
-      </li>
-      <div class="codigo">
-        <pre><code>os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')</code></pre>
-      </div>
-      <li>
-        En el archivo <b>manage.py</b> de la carpeta <b>app</b>, buscamos
-        <b>app.settings</b> y lo cambiamos por <b>config.settings</b>
-      </li>
-      <div class="codigo">
-        <pre><code>app/
+        </div>
+        <li>
+          En el archivo <b>settings.py</b> buscamos la variable
+          <b>ROOT_URLCONFIG</b> y ponemos <b>config.urls</b>
+        </li>
+        <div class="codigo">
+          <pre><code>ROOT_URLCONF = 'config.urls'</code></pre>
+        </div>
+        <li>
+          En el archivo <b>settings.py</b> buscamos la variable
+          <b>WSGI_APPLICATION</b> y lo cambiamos a
+          <b>config.wsgi.applications</b>
+        </li>
+        <div class="codigo">
+          <pre><code>WSGI_APPLICATION = 'config.wsgi.application'</code></pre>
+        </div>
+        <li>
+          En el archivo <b>settings.py</b> buscamos la variable
+          <b>LANGUAGE_CODE</b> y lo cambiamos a <b>es-co</b>, pongo
+          <b>co</b> porque hace referencia a <b>Colombia</b>
+        </li>
+        <div class="codigo">
+          <pre><code>LANGUAGE_CODE = 'es-co'</code></pre>
+        </div>
+        <li>
+          En el archivo <b>wsgi.py</b> buscamos <b>app.settings</b> y lo
+          cambiamos por <b>config.settings</b>
+        </li>
+        <div class="codigo">
+          <pre><code>os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')</code></pre>
+        </div>
+        <li>
+          En el archivo <b>manage.py</b> de la carpeta <b>app</b>, buscamos
+          <b>app.settings</b> y lo cambiamos por <b>config.settings</b>
+        </li>
+        <div class="codigo">
+          <pre><code>app/
   config/
     settings.py
   manage.py #buscamos en este archivo
@@ -153,31 +159,32 @@
 #modificamos esto que quede asi
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 </code></pre>
-      </div>
-    </ul>
-
-    <h2><i>Video 7</i>: Configurando la base de datos MySQL</h2>
-    <ul>
-      <li>
-        En la terminal (con el entorno activo), instalamos el cliente de mysql
-      </li>
-      <div class="codigo">
-        <pre><code id="mysqlclient">pip install mysqlclient</code></pre>
-        <button onclick="copiar('mysqlclient','8')" id="8">Copiar</button>
-      </div>
-      <li>Crear un <b>archivo db.py</b> en la carpeta <b>config</b></li>
-      <div class="codigo">
-        <pre><code>app/
+        </div>
+      </ul>
+    </section>
+    <section>
+      <h2><i>Video 7</i>: Configurando la base de datos MySQL</h2>
+      <ul>
+        <li>
+          En la terminal (con el entorno activo), instalamos el cliente de mysql
+        </li>
+        <div class="codigo">
+          <pre><code id="mysqlclient">pip install mysqlclient</code></pre>
+          <button onclick="copiar('mysqlclient','8')" id="8">Copiar</button>
+        </div>
+        <li>Crear un <b>archivo db.py</b> en la carpeta <b>config</b></li>
+        <div class="codigo">
+          <pre><code>app/
   config/
     #creamos el archivo db.py
 </code></pre>
-      </div>
-      <li>
-        Dentro del archivo <b>db.py</b> creamos una variable para crear la
-        conexión a la base de datos
-      </li>
-      <div class="codigo">
-        <pre><code id="conexion-db">MYSQL = {
+        </div>
+        <li>
+          Dentro del archivo <b>db.py</b> creamos una variable para crear la
+          conexión a la base de datos
+        </li>
+        <div class="codigo">
+          <pre><code id="conexion-db">MYSQL = {
   'default':{
   'ENGINE':'django.db.backends.mysql',
   'NAME':'db', #nombre de la base de datos
@@ -188,243 +195,458 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
   }
 }
 </code></pre>
-        <button onclick="copiar('conexion-db','9')" id="9">Copiar</button>
-      </div>
-      <li>
-        En el archivo de configuración <b>settings.py</b> importamos la base de
-        datos, modificando la variable <b>DATABASES</b>
-      </li>
-      <div class="codigo">
-        <pre><code id="import-mysql-s">import config.db as db
+          <button onclick="copiar('conexion-db','9')" id="9">Copiar</button>
+        </div>
+        <li>
+          En el archivo de configuración <b>settings.py</b> importamos la base
+          de datos, modificando la variable <b>DATABASES</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="import-mysql-s">import config.db as db
 DATABASES = db.MYSQL
 </code></pre>
-        <button onclick="copiar('import-mysql-s','10')" id="10">Copiar</button>
-      </div>
-      <p class="nota">
-        <b>Nota:</b>Hay que crear la base de datos (en este casi <b>db</b>)
-        antes de aplicar las migraciones
-      </p>
-      <li>
-        Ejecutar las migraciones, para migrar los modelos en la base de datos,
-        tema que se conocerá más adelante
-      </li>
-      <div class="codigo">
-        <pre><code id="ejecutar-migraciones">python manage.py migrate</code></pre>
-        <button onclick="copiar('ejecutar-migraciones','11')" id="11">
-          Copiar
-        </button>
-      </div>
-    </ul>
-    <h2><i>Video 8</i>: Modelos | Parte I</h2>
-    <h3>Crear aplicación</h3>
-    <ul>
-      <li>
-        Creo una carpeta <b>core</b> o como se quiera poner, dentro de la
-        carpeta <b>app</b>
-      </li>
-      <div class="codigo">
-        <pre><code>app/
+          <button onclick="copiar('import-mysql-s','10')" id="10">
+            Copiar
+          </button>
+        </div>
+        <p class="nota">
+          <b>Nota:</b>Hay que crear la base de datos (en este casi <b>db</b>)
+          antes de aplicar las migraciones
+        </p>
+        <li>
+          Ejecutar las migraciones, para migrar los modelos en la base de datos,
+          tema que se conocerá más adelante
+        </li>
+        <div class="codigo">
+          <pre><code id="ejecutar-migraciones">python manage.py migrate</code></pre>
+          <button onclick="copiar('ejecutar-migraciones','11')" id="11">
+            Copiar
+          </button>
+        </div>
+      </ul>
+    </section>
+    <section>
+      <h2><i>Video 8</i>: Modelos | Parte I</h2>
+      <h3>Crear aplicación</h3>
+      <ul>
+        <li>
+          Creo una carpeta <b>core</b> o como se quiera poner, dentro de la
+          carpeta <b>app</b>
+        </li>
+        <div class="codigo">
+          <pre><code>app/
   config/
     settings.py
   core/
 </code></pre>
-      </div>
-      <li>
-        Abro la terminal y entro en la carpeta <b>core</b> y creo la aplicación
-        a trabajar, <b>../</b> significa que el archivo <b>manage.py</b> esta
-        una carpeta más arriba y con <b>../</b> accedo a ella desde la carpeta
-        <b>core</b>
-      </li>
-      <div class="codigo">
-        <pre><code>cd core
+        </div>
+        <li>
+          Abro la terminal y entro en la carpeta <b>core</b> y creo la
+          aplicación a trabajar, <b>../</b> significa que el archivo
+          <b>manage.py</b> esta una carpeta más arriba y con <b>../</b> accedo a
+          ella desde la carpeta
+          <b>core</b>
+        </li>
+        <div class="codigo">
+          <pre><code>cd core
 python ../manage.py startapp erp #erp es el nombre de la app
 </code></pre>
-      </div>
+        </div>
 
-      <p class="nota">
-        <b>Nota:</b> En el archivo app.py de la carpeta de la app creada, en
-        "name" debo ponerle el nombre de la carpeta que tiene mis apps, en este
-        caso "core", entocen seria "core.erp"
-      </p>
-      <li>
-        En el archivo <b>models.py</b> van los modelos de la base de datos
-        <b>(las tablas)</b>
-      </li>
+        <p class="nota">
+          <b>Nota:</b> En el archivo app.py de la carpeta de la app creada, en
+          "name" debo ponerle el nombre de la carpeta que tiene mis apps, en
+          este caso "core", entocen seria "core.erp"
+        </p>
+        <li>
+          En el archivo <b>models.py</b> van los modelos de la base de datos
+          <b>(las tablas)</b>
+        </li>
 
-      <li>Se importa <b>models</b></li>
+        <li>Se importa <b>models</b></li>
 
-      <div class="codigo">
-        <pre><code id="import-models">from django.db import models</code></pre>
-        <button onclick="copiar('import-models','12')" id="12">Copiar</button>
-      </div>
-      <li>Creando modelo y sus algunos atributos</li>
-      <li>
-        Creamos la clase hija de <b>models.Model</b> y creamos el atributo
-        <b>name</b> el cuál va a ser de tipo varchar, y en Django es CharField
-      </li>
-      <div class="codigo">
-        <pre><code id="clase-name">class tabla(models.Model):
+        <div class="codigo">
+          <pre><code id="import-models">from django.db import models</code></pre>
+          <button onclick="copiar('import-models','12')" id="12">Copiar</button>
+        </div>
+        <li>Creando modelo y sus algunos atributos</li>
+        <li>
+          Creamos la clase hija de <b>models.Model</b> y creamos el atributo
+          <b>name</b> el cuál va a ser de tipo varchar, y en Django es CharField
+        </li>
+        <div class="codigo">
+          <pre><code id="clase-name">class tabla(models.Model):
   name = models.CharField(max_length=150,verbose_name='Nombre',default='Sin nombre')
 </code></pre>
-        <button onclick="copiar('clase-name','13')" id="13">Copiar</button>
-      </div>
-      <ul style="list-style-type: square">
+          <button onclick="copiar('clase-name','13')" id="13">Copiar</button>
+        </div>
+        <ul style="list-style-type: square">
+          <li>
+            El <b>CharField</b> significa que va a ser de tipo <b>texto</b> y
+            con <b>max_length</b> le indoco el maximo de caracteres a aceptar
+          </li>
+          <li>
+            También esta <b>models.TextField</b>, a ese no es obligatorio poner
+            el maximo de caracteres a aceptar
+          </li>
+          <li>
+            El <b>verbose_name</b> es lo que va a aparecer a la vista del
+            usuario, por ejemplo, el label del input cuando vaya a ingresar un
+            dato que se vaya a guardar ahi, si no se le pone el
+            <b>verbose_name</b> Django utilizara el nombre del atributo, en este
+            caso, <b>nanme</b>
+          </li>
+          <li>Con <b>default</b> le indico un valor por defecto</li>
+          <li>
+            Con el atributo <b>unique=True</b> le digo que el valor va a ser
+            unico, que no se puede ingresar otro igual a ese registro
+          </li>
+        </ul>
         <li>
-          El <b>CharField</b> significa que va a ser de tipo <b>texto</b> y con
-          <b>max_length</b> le indoco el maximo de caracteres a aceptar
+          Creamos el atributo <b>date_joined</b> para guardar una fecha, en
+          <b>default</b> ponemos la fecha actual con la libreria
+          <b>datetime</b> pero primero la importamos para utilizarla, todas las
+          librerias van al inicio del archivo
         </li>
-        <li>
-          También esta <b>models.TextField</b>, a ese no es obligatorio poner el
-          maximo de caracteres a aceptar
-        </li>
-        <li>
-          El <b>verbose_name</b> es lo que va a aparecer a la vista del usuario,
-          por ejemplo, el label del input cuando vaya a ingresar un dato que se
-          vaya a guardar ahi, si no se le pone el <b>verbose_name</b> Django
-          utilizara el nombre del atributo, en este caso, <b>nanme</b>
-        </li>
-        <li>Con <b>default</b> le indico un valor por defecto</li>
-        <li>
-          Con el atributo <b>unique=True</b> le digo que el valor va a ser
-          unico, que no se puede ingresar otro igual a ese registro
-        </li>
-      </ul>
-      <li>
-        Creamos el atributo <b>date_joined</b> para guardar una fecha, en
-        <b>default</b> ponemos la fecha actual con la libreria
-        <b>datetime</b> pero primero la importamos para utilizarla, todas las
-        librerias van al inicio del archivo
-      </li>
-      <div class="codigo">
-        <pre><code id="date-joined-atri">from datetime import datetime
+        <div class="codigo">
+          <pre><code id="date-joined-atri">from datetime import datetime
 date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code></pre>
-        <button onclick="copiar('date-joined-atri','14')" id="14">
-          Copiar
-        </button>
-      </div>
-      <li>Algunos atributos de <b>models.DateField</b></li>
-      <ul style="list-style-type: square">
+          <button onclick="copiar('date-joined-atri','14')" id="14">
+            Copiar
+          </button>
+        </div>
+        <li>Algunos atributos de <b>models.DateField</b></li>
+        <ul style="list-style-type: square">
+          <li>
+            <b>auto_now = True</b> este atributo pondra automaticamente la fecha
+            en la que se cree el registro o se actualice el registro
+          </li>
+          <li>
+            <b>auto_now_add = True</b> este atributo pondra solo la fecha de
+            creacion del registro
+          </li>
+        </ul>
         <li>
-          <b>auto_now = True</b> este atributo pondra automaticamente la fecha
-          en la que se cree el registro o se actualice el registro
+          Creamos el atributo <b>age</b> para almacenar una edad, en este caso,
+          un número entero
         </li>
+        <div class="codigo">
+          <pre><code id="age-integer-models">age = models.IntegerField(default=0)</code></pre>
+          <button onclick="copiar('age-integer-models','15')" id="15">
+            Copiar
+          </button>
+        </div>
+        <li>Algunos atributos de los números enteros</li>
+        <ul style="list-style-type: square">
+          <li>
+            <b>PositiveIntegerField()</b> para valores enteros pero solo
+            positivos
+          </li>
+          <li>
+            <b>NegativeIntegerField()</b> para valores enteros pero solo
+            negativos
+          </li>
+        </ul>
         <li>
-          <b>auto_now_add = True</b> este atributo pondra solo la fecha de
-          creacion del registro
+          Creamos el atributo <b>salary</b> para almacenar números decimales,
+          como es para decimales, si le voy a poner un <b>default</b> debe ser
+          <b>0.00</b>, los 2 ceros es según los decimales que le permita en el
+          <b>decimal_places</b>, que con ese le digo cuantos decimales se
+          permiten, y con <b>max_digits</b> le especifico el maximo de digitos
+          del número a registrar, por ejemplo, si le puse 9 digitos maximos, el
+          número más grande que recibe es 9999999.99, 7 a la izquierda del punto
+          decimal y los 2 de la derecha que son los 2 de <b>decimal_places</b>
         </li>
-      </ul>
-      <li>
-        Creamos el atributo <b>age</b> para almacenar una edad, en este caso, un
-        número entero
-      </li>
-      <div class="codigo">
-        <pre><code id="age-integer-models">age = models.IntegerField(default=0)</code></pre>
-        <button onclick="copiar('age-integer-models','15')" id="15">
-          Copiar
-        </button>
-      </div>
-      <li>Algunos atributos de los números enteros</li>
-      <ul style="list-style-type: square">
+        <div class="codigo">
+          <pre><code id="salary-decimal">salary = models.DecimalField(default=0.00,max_digits=9,decimal_places=2)</code></pre>
+          <button onclick="copiar('salary-decimal','16')" id="16">
+            Copiar
+          </button>
+        </div>
         <li>
-          <b>PositiveIntegerField()</b> para valores enteros pero solo positivos
+          Creamos el atributo <b>state</b> para almacenar un estado, el cúal
+          será un <b>booleano (boolean)</b>
         </li>
+        <div class="codigo">
+          <pre><code id="state-boolean">state = models.BooleanField(default = True)</code></pre>
+          <button onclick="copiar('state-boolean','17')" id="17">Copiar</button>
+        </div>
         <li>
-          <b>NegativeIntegerField()</b> para valores enteros pero solo negativos
+          Creamos el atributo <b>avatar</b> para guardar imagenes, en
+          <b>upload_to</b> le digo en que carpeta la va a guardar, si no existe
+          la creara, si le ponemos <b>/%Y/%m/%d</b> es para almacenarlos por
+          fechas, si por ejemplo se sube una imagen el <b>10/02/2023</b>, Django
+          creara una carpeta (dentro de MEDIA_ROOT/avatar), con el año actual
+          (2023), luego dentro, una carpeta con el mes en que se subio la imagen
+          (02), y luego una carpeta con el número del dia (10), y ahi almacenara
+          la imagen, pero sin los <b>/%Y/%m/%d</b>, lo almacenara en la carpeta
+          que le digamos en <b>upload_to</b>
         </li>
-      </ul>
-      <li>
-        Creamos el atributo <b>salary</b> para almacenar números decimales, como
-        es para decimales, si le voy a poner un <b>default</b> debe ser
-        <b>0.00</b>, los 2 ceros es según los decimales que le permita en el
-        <b>decimal_places</b>, que con ese le digo cuantos decimales se
-        permiten, y con <b>max_digits</b> le especifico el maximo de digitos del
-        número a registrar, por ejemplo, si le puse 9 digitos maximos, el número
-        más grande que recibe es 9999999.99, 7 a la izquierda del punto decimal
-        y los 2 de la derecha que son los 2 de <b>decimal_places</b>
-      </li>
-      <div class="codigo">
-        <pre><code id="salary-decimal">salary = models.DecimalField(default=0.00,max_digits=9,decimal_places=2)</code></pre>
-        <button onclick="copiar('salary-decimal','16')" id="16">Copiar</button>
-      </div>
-      <li>
-        Creamos el atributo <b>state</b> para almacenar un estado, el cúal será
-        un <b>booleano (boolean)</b>
-      </li>
-      <div class="codigo">
-        <pre><code id="state-boolean">state = models.BooleanField(default = True)</code></pre>
-        <button onclick="copiar('state-boolean','17')" id="17">Copiar</button>
-      </div>
-      <li>
-        Creamos el atributo <b>avatar</b> para guardar imagenes, en
-        <b>upload_to</b> le digo en que carpeta la va a guardar, si no existe la
-        creara, si le ponemos <b>/%Y/%m/%d</b> es para almacenarlos por fechas,
-        si por ejemplo se sube una imagen el <b>10/02/2023</b>, Django creara
-        una carpeta (dentro de MEDIA_ROOT/avatar), con el año actual (2023),
-        luego dentro, una carpeta con el mes en que se subio la imagen (02), y
-        luego una carpeta con el número del dia (10), y ahi almacenara la
-        imagen, pero sin los <b>/%Y/%m/%d</b>, lo almacenara en la carpeta que
-        le digamos en <b>upload_to</b>
-      </li>
-      <div class="codigo">
-        <pre><code id="image-avatar">avatar = models.ImageField(upload_to = 'avatar/%Y/%m/%d')</code></pre>
-        <button onclick="copiar('image-avatar','18')" id="18">Copiar</button>
-      </div>
-      <li>
-        Creamos el atributo <b>cvitae</b> para almacenar un archivo cualquiera,
-        con <b>null = True</b> le decimo que puede ser nulo con
-        <b>blank = True</b> le decimo que puede estar vacio
-      </li>
-      <div class="codigo">
-        <pre><code id="file-cvitae">cvitae = models.FileField(upload_to = 'cvitae',null = True, blank = True)</code></pre>
-        <button onclick="copiar('file-cvitae','19')" id="19">Copiar</button>
-      </div>
-      <li>
-        La funcion <b>__str___</b> es para mostrar una representacion del algún
-        objeto de la clase o modelo, puede ser el nombre, categoria, etc, por
-        ejemplo de la clase que estamos haciendo:
-      </li>
-      <div class="codigo">
-        <pre><code id="def-str-models">def __str__(self):
+        <div class="codigo">
+          <pre><code id="image-avatar">avatar = models.ImageField(upload_to = 'avatar/%Y/%m/%d')</code></pre>
+          <button onclick="copiar('image-avatar','18')" id="18">Copiar</button>
+        </div>
+        <li>
+          Creamos el atributo <b>cvitae</b> para almacenar un archivo
+          cualquiera, con <b>null = True</b> le decimo que puede ser nulo con
+          <b>blank = True</b> le decimo que puede estar vacio
+        </li>
+        <div class="codigo">
+          <pre><code id="file-cvitae">cvitae = models.FileField(upload_to = 'cvitae',null = True, blank = True)</code></pre>
+          <button onclick="copiar('file-cvitae','19')" id="19">Copiar</button>
+        </div>
+        <li>
+          La funcion <b>__str___</b> es para mostrar una representacion del
+          algún objeto de la clase o modelo, puede ser el nombre, categoria,
+          etc, por ejemplo de la clase que estamos haciendo:
+        </li>
+        <div class="codigo">
+          <pre><code id="def-str-models">def __str__(self):
   return f'El nombre: {self.name}'
 </code></pre>
-        <button onclick="copiar('def-str-models','20')" id="20">Copiar</button>
-      </div>
-      <li>
-        La clase <b>Meta</b> dentro del modelo o clase es para definir
-        diferentes datos
-      </li>
-      <ul style="list-style-type: square">
+          <button onclick="copiar('def-str-models','20')" id="20">
+            Copiar
+          </button>
+        </div>
         <li>
-          El <b>verbose_name</b> es para el registro en singular (empleado, en
-          este caso)
+          La clase <b>Meta</b> dentro del modelo o clase es para definir
+          diferentes datos
         </li>
-        <li>
-          El <b>verbose_name_plural</b> es para el registro en plural
-          (empleados, en este caso)
-        </li>
-        <li>
-          El <b>db_table</b> es para el nombre que se le va a poner en la base
-          de datos, si no se le especifica, el pondra el nombre de de la app y
-          luego la clase (erp_empleado en este caso)
-        </li>
-        <li>
-          El <b>ordering</b> es para indicarle que columna (o atributo del
-          modelo) se va a ordenar en la base de datos, si le pongo un
-          <b>"-"</b> invertira el orden
-        </li>
-      </ul>
-      <div class="codigo">
-        <pre><code id="clase-meta">def Meta:
+        <ul style="list-style-type: square">
+          <li>
+            El <b>verbose_name</b> es para el registro en singular (empleado, en
+            este caso)
+          </li>
+          <li>
+            El <b>verbose_name_plural</b> es para el registro en plural
+            (empleados, en este caso)
+          </li>
+          <li>
+            El <b>db_table</b> es para el nombre que se le va a poner en la base
+            de datos, si no se le especifica, el pondra el nombre de de la app y
+            luego la clase (erp_empleado en este caso)
+          </li>
+          <li>
+            El <b>ordering</b> es para indicarle que columna (o atributo del
+            modelo) se va a ordenar en la base de datos, si le pongo un
+            <b>"-"</b> invertira el orden
+          </li>
+        </ul>
+        <div class="codigo">
+          <pre><code id="clase-meta">def Meta:
   verbose_name = 'empleado'
   verbose_name_plural = 'empleados'
   db_table = 'empleado'
   ordering = ['id'] #['-id']
 </code></pre>
-        <button onclick="copiar('clase-meta','21')" id="21">Copiar</button>
-      </div>
-    </ul>
-    <h2><i>Video 9</i>: Modelos | Parte II</h2>
-    <h2><i>Video 10</i></h2>
+          <button onclick="copiar('clase-meta','21')" id="21">Copiar</button>
+        </div>
+      </ul>
+    </section>
+    <section>
+      <h2><i>Video 9</i>: Modelos | Parte II</h2>
+      <h3>Relacionar tablas</h3>
+      <ul>
+        <li>Creo las tablas a relacionar (1 a 1)</li>
+        <div class="codigo">
+          <pre><code id="type-rela-1a1">class Type(models.Model):
+  name=models.CharField(max_length=150,verbose_name='Nombre')
+
+  #atributos
+  #clase str
+  #clase Meta
+</code></pre>
+          <button onclick="copiar('type-rela-1a1','22')" id="22">Copiar</button>
+        </div>
+        <li>
+          En la clase que lleva la llave foranea, creamos el atributo
+          <b>type</b> que va a hacer referencia a la clase/tabla anterior,
+          utilizamos la clase <b>models.ForeignKey</b> y le pasamos el nombre de
+          la clase la cual va a hacer relacion, y por obligacion toca pasarle el
+          atributo <b>on_delete</b> donde le decimos que debe hacer si se llega
+          a eliminar esa tabla <b>Type</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="clas-emple-rela">class Empleado(models.Model):
+  type=models.ForeignKey(Type, on_delete=models.CASCADE)
+
+  #atributos
+  #clase str
+  #clase Meta
+</code></pre>
+          <button onclick="copiar('clas-emple-rela','23')" id="23">
+            Copiar
+          </button>
+        </div>
+        <ul style="list-style-type: square">
+          <li>
+            Con <b>CASCADE</b>, le digo que borre todos los registros que
+            dependan de esa tabla o clase <b>(Type)</b>
+          </li>
+          <li>
+            con <b>SET_NULL</b>, si lo voy a poner, debo agregar el atributo
+            <b>null=True</b> despúes del <b>on_delete</b>, y asi, con el
+            <b>SET_NULL</b> le digo que si se borra la tabla relacionada
+            <b>(Type)</b>, todos los registros que dependian de esa clase, el
+            valor se vuelva nulo
+          </li>
+          <li>
+            con <b>PROTECT</b> mp deja borrar la otra tabla porque se necesita o
+            la requiere otra tabla
+          </li>
+        </ul>
+        <li>
+          Creo tabla para relacionar muchos a muchos (m a m),creare una tabla
+          Category la cual relacionare con Empleado
+        </li>
+        <div class="codigo">
+          <pre><code id="class-cate-rela">class Category(models.Model):
+  name=models.CharField(max_length=150,verbose_name='Categoria')
+  
+  #atributos
+  #clase str
+  #clase Meta</code></pre>
+          <button onclick="copiar('class-cate-rela','24')" id="24">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Puedo poner el atributo <b>models.ManyToManyField</b> en cualquier de
+          las 2 tablas a relacionar, lo ppndre en el <b>Empleado</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="class-emple-many">class Empleado(models.Model):
+  categ = models.ManyToManyField(Category)
+            </code></pre>
+          <button onclick="copiar('class-emple-many','25')" id="25">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Esto crea otra tabla con las 2 llaves foraneas de cada clase. Si a esa
+          tabla que se creo se le quiere poner más atributos, entonces toca
+          crear una clase para esa relacion, llamando cada clase con una llave
+          foranea
+        </li>
+        <li>
+          <b>NOTA:</b> Despues de hacer un cambio en las clases/tablas siempre
+          hacer los <b>makemigrations</b> y el <b>migrate</b> con
+          <b>manage.py</b>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2><i>Video 10</i>: ORM | Parte I</h2>
+      <ul>
+        <li>Haremos la practica del <b>ORM</b> en el archivo <b>test.py</b></li>
+        <li>Importar lo siguiente para errores previos</li>
+        <div class="codigo">
+          <pre><code id="errores-pre-test">import sys
+sys.path.append('../../')
+
+# Traceback (most recent call last):
+#   File "f:\programacion\Proyectos\AdminTrading\Online\Django\app\core\list_ope\tests.py", line 3, in &lt;module&gt;
+#     from core.list_ope.models import *
+# ModuleNotFoundError: No module named 'core.list_ope'
+
+#para ese error, si de la forma anterior no funciona entonces pongo la ruta del proyecto completa
+# ejem: 
+# sys.path.append('f:/programacion/Proyectos/Django/app/')
+
+from config.wsgi import *
+#Para el problema de: django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS,
+# but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.
+# configure() before accessing settings.</code></pre>
+          <button onclick="copiar('errores-pre-test','26')" id="26">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Importamos los modelos, <b>core.erp</b> son las carpetas donde esta mi
+          app, e importamos todo <b>(import *)</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="import-models-test">from core.erp.models import *</code></pre>
+          <button onclick="copiar('import-models-test','27')" id="27">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Consultar todo de una tabla, con esa funcion traigo todo lo de esa
+          clase/tabla <b>Type</b>, lo guardo en una variable y puedo imprimirlo
+        </li>
+        <div class="codigo">
+          <pre><code id="type-object-all">query = Type.objects.all()
+print(query)
+</code></pre>
+          <button onclick="copiar('type-object-all','28')" id="28">
+            Copiar
+          </button>
+        </div>
+        <li><b>Insertar datos</b>, se puede de varias formas</li>
+        <li>
+          Inicializamos un objeto (registro) de la clase a utilizar, accedemos
+          al atributo a agregar y ponemos el valor que vayamos a ingresar y
+          luego guardamos
+        </li>
+        <div class="codigo">
+          <pre><code id="guardar-valor-orm">tipe = Type()
+tipe.nombreAtributo = 'Hola mundo (valor a guardar)'
+tipe.save()
+
+#Otra forma
+tipe = Type(atributo='Valor')
+tipe.save()
+
+#Otra forma
+tipe = Type(atributo='Valor').save()
+</code></pre>
+          <button onclick="copiar('guardar-valor-orm','29')" id="29">
+            Copiar
+          </button>
+        </div>
+        <li>
+          <b>Insertar datos con llave foranea</b>, creamos el registro/objeto de
+          la clase/tabla, y agregamos el atributo que es una clase foranea, como
+          es una clase foranea, llamamos a la clase a la cual esta relacionada y
+          le pasamos el id del "tipo" al cual va a perteneces el "empleado",
+          suponiendo que <b>Type</b> ya tiene algunos registros
+        </li>
+        <div class="codigo">
+          <pre><code id="insert-foranea-regi">empleado = Empleado()
+empleado.type = Type(id=1)
+</code></pre>
+          <button onclick="copiar('insert-foranea-regi','30')" id="30">
+            Copiar
+          </button>
+        </div>
+        <li>
+          <b>Actualizar datos</b>, obtengo el registro a modificar,
+          <b>pk</b> hace referencia a la llave primaria o puede ser <b>id</b>,
+          si es que no le pusimos un nombre propio al id de cada registro,
+          Django le pondra <b>id</b>. Ya con el valor obtenido, accedemos al
+          atributo a modificar y guardamos
+        </li>
+        <div class="codigo">
+          <pre><code id="actu-tipe">tipe = Type.objects.get(pk=1)
+tipe.name = 'valor nuevo'
+tipe.save()
+</code></pre>
+          <button onclick="copiar('actu-tipe','31')" id="31">Copiar</button>
+        </div>
+        <li>
+          <b>Eliminar datos</b>, obtenemos el registro a eliminar, y eliminamos
+          con <b>delete()</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="delete-regis">tipe = Type.objects.get(pk=1)
+tipe.delete()
+          </code></pre>
+          <button onclick="copiar('delete-regis','32')" id="32">Copiar</button>
+        </div>
+      </ul>
+    </section>
+
     <h2><i>Video 11</i></h2>
     <h2><i>Video 12</i></h2>
     <h2><i>Video 13</i></h2>

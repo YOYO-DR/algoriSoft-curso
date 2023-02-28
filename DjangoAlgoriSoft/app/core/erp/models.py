@@ -24,13 +24,14 @@ class Category(models.Model):#muchos a muchos
     ordering=['id']#como quiere que se ordene
 
 class Empleado(models.Model):
-  categ = models.ManyToManyField(Category) #asi le digo que la relacion estre Empleado y CAtegory es de muchos a muchos y va a crear una tabla intermedia para ello
-  #si esta relacion de muchos a muchos quiero ponerle mas atributos, ya puedo crear aparte la clase de esa tabla, utilizando las foreingKeys más los atributos a ponerles
   type=models.ForeignKey(Type, on_delete=models.CASCADE) #1 a 1
   #asi lo relaciono con la otra tabla
   #con on_delete le digo que hacer si se llega a eleminar la clase "Type", CASCADE significa que borre todos los registros que dependan de esa clase type,y es obligatorio
   #SET_NULL, null=True (con esto le digo que si se borra se vuelvan valores nulos y que pueda aceptar esos valores)
   #con PROTECT le digo que no puede borrar esa tabla o elemento de esa tabla pq otra tabla lo necesita
+  categ = models.ManyToManyField(Category) #asi le digo que la relacion estre Empleado y CAtegory es de muchos a muchos y va a crear una tabla intermedia para ello
+  #si esta relacion de muchos a muchos quiero ponerle mas atributos, ya puedo crear aparte la clase de esa tabla, utilizando las foreingKeys más los atributos a ponerles
+  
   
   names=models.CharField(max_length=150,verbose_name='Nombres',default='Sin nombres')
   #names=models.TextField()
