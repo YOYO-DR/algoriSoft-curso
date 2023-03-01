@@ -82,7 +82,7 @@
         <li><a href="#video-9">Video 9: Modelos | Parte II</a></li>
         <li><a href="#video-10">Video 10: ORM | Parte I</a></li>
         <li><a href="#video-11">Video 11: ORM II</a></li>
-        <li><a href="#video-12">Video 12</a></li>
+        <li><a href="#video-12">Video 12: Git | Control de versiones</a></li>
         <li><a href="#video-13">Video 13</a></li>
         <li><a href="#video-14">Video 14</a></li>
         <li><a href="#video-15">Video 15</a></li>
@@ -735,12 +735,15 @@ tipe.delete()
           extraidos, o aplicando un for
         </li>
         <div class="codigo">
-          <pre><code>obj[0].id #Para acceder al id
+          <pre><code id="traer-filter-punto">obj[0].id #Para acceder al id
 obj[0].name #para acceder al nombre, en este caso, esto seria del primer registro, del segundo registro, [1] y demás.
 #for 
 for i in obj:
   print(f'ID: {i.id} / Name: {i.name}')
           </code></pre>
+          <button onclick="copiar('traer-filter-punto','34')" id="34">
+            Copiar
+          </button>
         </div>
         <li>Filtros:</li>
         <ul style="list-style-type: square">
@@ -782,7 +785,7 @@ for i in obj:
         </li>
         <div class="codigo">
           <pre><code id="query-sintax">Type.objects.filter().query</code></pre>
-          <button onclick="copiar('query-sintax','34')" id="34">Copiar</button>
+          <button onclick="copiar('query-sintax','35')" id="35">Copiar</button>
         </div>
         <li>
           Con esta consulta, para este ejemplo, me traeria todos los registros
@@ -793,14 +796,69 @@ for i in obj:
         </li>
         <div class="codigo">
           <pre><code id="filter-rela-type">Empleado.objects.filter(Type_id=1)</code></pre>
-          <button onclick="copiar('filter-rela-type','35')" id="35">
+          <button onclick="copiar('filter-rela-type','36')" id="36">
             Copiar
           </button>
         </div>
       </ul>
     </section>
-
-    <h2><i>Video 12</i>: Git | Control de versiones</h2>
+    <section>
+      <h2 id="video-12"><i>Video 12</i>: Git | Control de versiones</h2>
+      <ul>
+        <li>Registrar tú PC, por clave <b>ssh</b> a tu repositorio personal</li>
+        <ul style="list-style-type: square">
+          <li>
+            Saco mi clave <b>ssh</b>, en la terminal de <b>Git Bash</b>, se le
+            da todo <b>enter</b> y <b>Yes</b> en la confirmación
+          </li>
+          <div class="codigo">
+            <pre><code id="ssh-key-bash">ssh-keygen -t rsa -b 4096</code></pre>
+            <button onclick="copiar('ssh-key-bash','37')" id="37">
+              Copiar
+            </button>
+          </div>
+          <li>Busco la clave y la copio</li>
+          <div class="codigo">
+            <pre><code id="cat-ssh-key">cat ~/.ssh/id_rsa.pub</code></pre>
+            <button onclick="copiar('cat-ssh-key','38')" id="38">Copiar</button>
+          </div>
+        </ul>
+        <li>Pasos para poner la key <b>ssh</b> en GitHub</li>
+        <ul style="list-style-type: square">
+          <li>
+            En <b>settings</b> de la cuenta de GitHub, busco
+            <b>SSH and GPG keys</b>
+          </li>
+          <li>
+            Agrego la clave <b>ssh</b>, en <b>New SSH key</b>, le pongo un
+            titulo y pego la clave en <b>Key</b>, y luego clic en
+            <b>Add SSH key</b>
+          </li>
+        </ul>
+        <li>
+          Creo el repositorio en <b>GitHub</b>, con el <b>README.md</b>, y el
+          <b>.gitignore</b> de python, para que ignore el entorno (<b>env</b>) y
+          luego lo clono en el PC (Personal) en la cual registre la clave
+          <b>ssh</b>
+        </li>
+        <li>
+          Agrego mis archivos ahi en el repositorio clonado pero sin el entorno
+          (<b>env</b>)
+        </li>
+        <li>
+          En la terminal de <b>Bash</b>, posicionado en la carpeta, aplico un
+          <b>git add .</b>, para agregar todo, el <b>.gitignore</b> que creamos
+          en el GitHub con la seleccion de python, no subira el entorno que
+          creemos en el repositorio local, debe llamarse <b>env</b> si o si el
+          entorno,para que git pueda ignorarlo al subirlo
+        </li>
+        <li>Realizo un <b>git commit -m "primer commit"</b></li>
+        <li>
+          Y luego un <b>git push origin main</b>, para que se suban los cambiosb
+          agregados al repositorio remoto
+        </li>
+      </ul>
+    </section>
     <h2><i>Video 13</i></h2>
     <h2><i>Video 14</i></h2>
     <h2><i>Video 15</i></h2>
