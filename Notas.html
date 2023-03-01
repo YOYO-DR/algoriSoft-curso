@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" href="media/img/nota-adhesiva.png" type="image/x-icon" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,6 +57,9 @@
         padding: 3px;
         color: white;
         user-select: none;
+      }
+      .details-indice {
+        display: inline-flex;
       }
       .details-indice span:hover {
         border: 1px solid red;
@@ -119,17 +123,17 @@
         </li>
         <li>Crear un entorno virtual</li>
         <div class="codigo">
-          <pre><code id="crear-entorno"> python -m venv nombreEntorno</code></pre>
+          <pre><code id="crear-entorno"> python -m venv env</code></pre>
           <button onclick="copiar('crear-entorno','1')" id="1">Copiar</button>
         </div>
         <li>Activar el entorno</li>
         <div class="codigo">
-          <pre><code id="activar-entorno">nombreEntorno\Scripts\activate</code></pre>
+          <pre><code id="activar-entorno">env\Scripts\activate</code></pre>
           <button onclick="copiar('activar-entorno','2')" id="2">Copiar</button>
         </div>
         <li>Si se esta utilizando Git Bash, se activa asi</li>
         <div class="codigo">
-          <pre><code id="activar-entorno-bash">source nombreEntorno/Scripts/activate</code></pre>
+          <pre><code id="activar-entorno-bash">source env/Scripts/activate</code></pre>
           <button onclick="copiar('activar-entorno-bash','3')" id="3">
             Copiar
           </button>
