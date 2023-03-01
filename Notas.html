@@ -39,17 +39,79 @@
         padding: 5px;
         border-radius: 5px;
       }
+      .indice a {
+        text-decoration: none;
+        color: cornflowerblue;
+      }
+      .indice a:hover {
+        color: red;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 1px;
+      }
+      .details-indice span {
+        cursor: pointer;
+        background-color: red;
+        border-radius: 5px;
+        padding: 3px;
+        color: white;
+        user-select: none;
+      }
+      .details-indice span:hover {
+        border: 1px solid red;
+        color: black;
+        background-color: white;
+      }
     </style>
     <title>Notas Django</title>
   </head>
   <body>
     <h1>Curso Django de AlgoriSoft</h1>
+    <h2>Contenido</h2>
+    <details class="details-indice">
+      <summary><span>Indice</span></summary>
+      <ul class="indice">
+        <li><a href="#video-4">Video 4: Crear primer proyecto de Django</a></li>
+        <li>
+          <a href="#video-5">Video 5: Crear proyecto de Django con el CMD</a>
+        </li>
+        <li>
+          <a href="#video-7">Video 7: Configurando la base de datos MySQL</a>
+        </li>
+        <li><a href="#video-8">Video 8: Modelos | Parte I</a></li>
+        <li><a href="#video-9">Video 9: Modelos | Parte II</a></li>
+        <li><a href="#video-10">Video 10: ORM | Parte I</a></li>
+        <li><a href="#video-11">Video 11: ORM II</a></li>
+        <li><a href="#video-12">Video 12</a></li>
+        <li><a href="#video-13">Video 13</a></li>
+        <li><a href="#video-14">Video 14</a></li>
+        <li><a href="#video-15">Video 15</a></li>
+        <li><a href="#video-16">Video 16</a></li>
+        <li><a href="#video-17">Video 17</a></li>
+        <li><a href="#video-18">Video 18</a></li>
+        <li><a href="#video-19">Video 19</a></li>
+        <li><a href="#video-20">Video 20</a></li>
+        <li><a href="#video-21">Video 21</a></li>
+        <li><a href="#video-22">Video 22</a></li>
+        <li><a href="#video-23">Video 23</a></li>
+        <li><a href="#video-24">Video 24</a></li>
+        <li><a href="#video-25">Video 25</a></li>
+        <li><a href="#video-26">Video 26</a></li>
+        <li><a href="#video-27">Video 27</a></li>
+        <li><a href="#video-28">Video 28</a></li>
+        <li><a href="#video-29">Video 29</a></li>
+        <li><a href="#video-30">Video 30</a></li>
+        <li><a href="#video-31">Video 31</a></li>
+        <li><a href="#video-32">Video 32</a></li>
+        <li><a href="#video-33">Video 33</a></li>
+      </ul>
+    </details>
     <section>
-      <h2><i>Video 4</i>: Crear primer proyecto de Django</h2>
+      <h2 id="video-4"><i>Video 4</i>: Crear primer proyecto de Django</h2>
       <p>Se creo con PyCharm</p>
     </section>
     <section>
-      <h2><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
+      <h2 id="video-5"><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
       <ul>
         <li>
           Abrir la terminal en VScode con ctrl + ñ o en la carpeta dar clic
@@ -163,7 +225,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
       </ul>
     </section>
     <section>
-      <h2><i>Video 7</i>: Configurando la base de datos MySQL</h2>
+      <h2 id="video-7"><i>Video 7</i>: Configurando la base de datos MySQL</h2>
       <ul>
         <li>
           En la terminal (con el entorno activo), instalamos el cliente de mysql
@@ -226,7 +288,7 @@ DATABASES = db.MYSQL
       </ul>
     </section>
     <section>
-      <h2><i>Video 8</i>: Modelos | Parte I</h2>
+      <h2 id="video-8"><i>Video 8</i>: Modelos | Parte I</h2>
       <h3>Crear aplicación</h3>
       <ul>
         <li>
@@ -444,7 +506,7 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
       </ul>
     </section>
     <section>
-      <h2><i>Video 9</i>: Modelos | Parte II</h2>
+      <h2 id="video-9"><i>Video 9</i>: Modelos | Parte II</h2>
       <h3>Relacionar tablas</h3>
       <ul>
         <li>Creo las tablas a relacionar (1 a 1)</li>
@@ -536,7 +598,7 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
       </ul>
     </section>
     <section>
-      <h2><i>Video 10</i>: ORM | Parte I</h2>
+      <h2 id="video-10"><i>Video 10</i>: ORM | Parte I</h2>
       <ul>
         <li>Haremos la practica del <b>ORM</b> en el archivo <b>test.py</b></li>
         <li>Importar lo siguiente para errores previos</li>
@@ -646,9 +708,99 @@ tipe.delete()
         </div>
       </ul>
     </section>
+    <section>
+      <h2 id="video-11"><i>Video 11</i>: ORM II</h2>
+      <ul>
+        <li>
+          Con el <b>filter()</b> podemos realizar consultas personalizadas, sin
+          parametros, trae todos los registros, creamos una variable para
+          guardar lo consultado
+        </li>
+        <div class="codigo">
+          <pre><code id="filter-sintax">obj = Type.objects.filter()</code></pre>
+          <button onclick="copiar('filter-sintax','33')" id="33">Copiar</button>
+        </div>
+        <li>
+          Algunos filtros, se ponen dentro del los parentesis del <b>filter(</b
+          ><i>aqui</i><b>)</b>, en la documentacion puedo leer que más formas de
+          aplicar filtros hay
+        </li>
+        <li>
+          <b>name__</b>: es el nombre de la columna por la cual se va a filtrar
+        </li>
+        <li>
+          Despues de la busqueda, puedo accerder a los resultados, de la misma
+          forma como hacedo a los valores de un arreglo, y como se obtienen como
+          objetos, con el <b>"."</b> accedo a los valores de los registros
+          extraidos, o aplicando un for
+        </li>
+        <div class="codigo">
+          <pre><code>obj[0].id #Para acceder al id
+obj[0].name #para acceder al nombre, en este caso, esto seria del primer registro, del segundo registro, [1] y demás.
+#for 
+for i in obj:
+  print(f'ID: {i.id} / Name: {i.name}')
+          </code></pre>
+        </div>
+        <li>Filtros:</li>
+        <ul style="list-style-type: square">
+          <li>
+            <b>name__contains='pr'</b> - Trae los registros que por la columna
+            <b>name</b> contengan <b>pr</b>
+          </li>
+          <li>
+            <b>name__startswith='pre'</b> - Trae los valores que inicien con
+            <b>pre</b> en este ejemplo
+          </li>
+          <li>
+            <b>name__endswith='a'</b> - Trae los valores que terminen con
+            <b>a</b>
+          </li>
+          <li>
+            <b>name__exact='hola'</b> - Trae todos los valores que sean
+            exactamente igual a <b>hola</b>
+          </li>
+          <li>
+            <b>name__iexact='hola'</b> - Hace lo mismo que <b>exact</b> pero
+            ignora si es mayuscula o minuscula
+          </li>
+          <li>
+            <b>name__in=['hola','viva']</b> - Trae todos los registros que
+            contengan <b>hola</b> o <b>viva</b>, independientemente que tenga
+            mayusculas o minusculas
+          </li>
+          <li>
+            <b>filter().exclude(pk=1)</b> - Con <b>exclude</b> puedo excluir
+            registros que no quiera, en este caso, excluyo el registro que tenga
+            el <b>id</b> (que es la llave primaria <b>pk</b>)
+          </li>
+          <li><b>filter().count()</b> - Me muestra cuantos registros trajo</li>
+        </ul>
+        <li>
+          Con el <b>query</b> me retorna la consulta en el lenguaje <b>sql</b>,
+          varia dependiendo de la base de datos
+        </li>
+        <div class="codigo">
+          <pre><code id="query-sintax">Type.objects.filter().query</code></pre>
+          <button onclick="copiar('query-sintax','34')" id="34">Copiar</button>
+        </div>
+        <li>
+          Con esta consulta, para este ejemplo, me traeria todos los registros
+          que sean de esa llave foranea o dependan de ese id, en la otra tabla
+          la cual este relacionada. En este ejemplo, me traera todos los
+          empleados que sean de tipo 1, debe poner exacatamente el nombre de la
+          variable la cual en el modelo tenga la llave foranea
+        </li>
+        <div class="codigo">
+          <pre><code id="filter-rela-type">Empleado.objects.filter(Type_id=1)</code></pre>
+          <button onclick="copiar('filter-rela-type','35')" id="35">
+            Copiar
+          </button>
+        </div>
+      </ul>
+    </section>
 
-    <h2><i>Video 11</i></h2>
-    <h2><i>Video 12</i></h2>
+    <h2><i>Video 12</i>: Git | Control de versiones</h2>
     <h2><i>Video 13</i></h2>
     <h2><i>Video 14</i></h2>
     <h2><i>Video 15</i></h2>
