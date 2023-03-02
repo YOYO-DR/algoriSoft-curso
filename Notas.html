@@ -66,13 +66,28 @@
         color: black;
         background-color: white;
       }
+      .flecha-arriba {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+      .flecha-arriba img {
+        width: 40px;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 0 60px;
+        background-color: green;
+      }
+      .flecha-arriba img:hover {
+        background-color: white;
+      }
     </style>
     <title>Notas Django</title>
   </head>
   <body>
     <h1>Curso Django de AlgoriSoft</h1>
     <h2>Contenido</h2>
-    <details class="details-indice">
+    <details id="inicio" class="details-indice">
       <summary><span>Indice</span></summary>
       <ul class="indice">
         <li><a href="#video-4">Video 4: Crear primer proyecto de Django</a></li>
@@ -87,7 +102,9 @@
         <li><a href="#video-10">Video 10: ORM | Parte I</a></li>
         <li><a href="#video-11">Video 11: ORM II</a></li>
         <li><a href="#video-12">Video 12: Git | Control de versiones</a></li>
-        <li><a href="#video-13">Video 13</a></li>
+        <li>
+          <a href="#video-13">Video 13: Panel de administrador | SuperUser</a>
+        </li>
         <li><a href="#video-14">Video 14</a></li>
         <li><a href="#video-15">Video 15</a></li>
         <li><a href="#video-16">Video 16</a></li>
@@ -113,6 +130,11 @@
     <section>
       <h2 id="video-4"><i>Video 4</i>: Crear primer proyecto de Django</h2>
       <p>Se creo con PyCharm</p>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-5"><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
@@ -227,6 +249,11 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 </code></pre>
         </div>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-7"><i>Video 7</i>: Configurando la base de datos MySQL</h2>
@@ -290,6 +317,11 @@ DATABASES = db.MYSQL
           </button>
         </div>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-8"><i>Video 8</i>: Modelos | Parte I</h2>
@@ -508,6 +540,11 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
           <button onclick="copiar('clase-meta','21')" id="21">Copiar</button>
         </div>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-9"><i>Video 9</i>: Modelos | Parte II</h2>
@@ -600,6 +637,11 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
           <b>manage.py</b>
         </li>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-10"><i>Video 10</i>: ORM | Parte I</h2>
@@ -711,6 +753,11 @@ tipe.delete()
           <button onclick="copiar('delete-regis','32')" id="32">Copiar</button>
         </div>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-11"><i>Video 11</i>: ORM II</h2>
@@ -805,6 +852,11 @@ for i in obj:
           </button>
         </div>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
     <section>
       <h2 id="video-12"><i>Video 12</i>: Git | Control de versiones</h2>
@@ -862,8 +914,89 @@ for i in obj:
           agregados al repositorio remoto
         </li>
       </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
-    <h2><i>Video 13</i></h2>
+    <section>
+      <h2 id="video-13"><i>Video 13</i>: Panel de administrador | SuperUser</h2>
+      <ul>
+        <li>
+          Con el <b>admin.py</b> de mi app, puedo hacer diferentes funciones.
+          Para ver el panel de administrador, primero debo haber hecho las
+          migraciones, luego con el <b>manage.py</b> creo el super usuario
+        </li>
+        <div class="codigo">
+          <pre><code id="create-super">python manage.py createsuperuser</code></pre>
+          <button onclick="copiar('create-super','39')" id="39">Copiar</button>
+        </div>
+        <ul style="list-style-type: square">
+          <li>Escribo el nombre del usuario</li>
+          <li>Correo</li>
+          <li>Contraseña</li>
+          <li>Confirmar contraseña</li>
+          <li>ponen la: <b>Y</b>,que es de <b>YES</b></li>
+        </ul>
+        <li>
+          En la tabla <b>auth_user</b> de la base de datos, se vera el usuario y
+          la contraseña encriptada
+        </li>
+        <li>Para entrar al panel del administrador, ejecuto el servidor</li>
+        <div class="codigo">
+          <pre><code id="run-server">python manage.py runserver</code></pre>
+          <button onclick="copiar('run-server','40')" id="40">Copiar</button>
+        </div>
+        <li>
+          Y en la barra de direcciones le agrego el <b>/admin</b>, abrira en el
+          puerto <b>8000</b> normalmente, entones para entrar al administrador,
+          deberia ser asi: <b>https://127.0.0.1:8000/admin/</b>
+        </li>
+        <li>
+          En el <b>admin.py</b> de mi app, importo mis modelos, le pongo el
+          <b>core</b>, porque yo guarde todas mis apps dentro de la carpeta
+          <b>core</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="import-models-admin">from import core.erp.models import *</code></pre>
+          <button onclick="copiar('import-models-admin','50')" id="50">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Registro los modelos o modelo que quiera ver o administrar desde el
+          panel de administrador, en este caso, pondre el de las categorias
+        </li>
+        <div class="codigo">
+          <pre><code id="category-regi-admin">admin.site.register(Category)</code></pre>
+          <button onclick="copiar('category-regi-admin','51')" id="51">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Cuando inicie sesión en el login del admin, en el panel va a aparecer
+          <b>Categorias</b>, porque es el <b>verbose_name_plural</b> que le
+          pusimos, esa es una de las funciones del <b>verbose_name_plural</b>
+        </li>
+        <li>
+          Y el <b>__str__</b> sera lo que se vera como principal de cada
+          registro, en este caso, de las categorias, si le puse en el
+          <b>__str__</b> el nombr ey id,, aparecera eso como demostración
+        </li>
+        <li>
+          El panel es bastante intuitivo, y se puede eliminar, agregar,
+          modificar ver registros de los modelos que le registre en el
+          <b>admin.py</b>, como también los usuarios, grupos y demás
+        </li>
+      </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
+    </section>
+
     <h2><i>Video 14</i></h2>
     <h2><i>Video 15</i></h2>
     <h2><i>Video 16</i></h2>
@@ -960,7 +1093,14 @@ for i in obj:
     <h2><i>Video 107</i></h2>
     <h2><i>Video 108</i></h2>
     <h2><i>Video 109</i></h2>
-    <h2><i>Video 110</i></h2>
+    <section>
+      <h2><i>Video 110</i></h2>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
+    </section>
 
     <script>
       function copiar(idValor, idBoton) {
