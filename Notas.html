@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <link rel="icon" href="media/img/nota-adhesiva.png" type="image/x-icon" />
     <meta charset="UTF-8" />
@@ -93,7 +93,6 @@
     <details id="inicio" class="details-indice">
       <summary><span>Indice</span></summary>
       <ul class="indice">
-        <li><a href="#video-4">Video 4: Crear primer proyecto de Django</a></li>
         <li>
           <a href="#video-5">Video 5: Crear proyecto de Django con el CMD</a>
         </li>
@@ -108,7 +107,9 @@
         <li>
           <a href="#video-13">Video 13: Panel de administrador | SuperUser</a>
         </li>
-        <li><a href="#video-14">Video 14</a></li>
+        <li>
+          <a href="#video-14">Video 14: Configuración | Mi primera view</a>
+        </li>
         <li><a href="#video-15">Video 15</a></li>
         <li><a href="#video-16">Video 16</a></li>
         <li><a href="#video-17">Video 17</a></li>
@@ -130,15 +131,6 @@
         <li><a href="#video-33">Video 33</a></li>
       </ul>
     </details>
-    <section>
-      <h2 id="video-4"><i>Video 4</i>: Crear primer proyecto de Django</h2>
-      <p>Se creo con PyCharm</p>
-      <div class="flecha-arriba">
-        <a href="#inicio"
-          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
-        /></a>
-      </div>
-    </section>
     <section>
       <h2 id="video-5"><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
       <ul>
@@ -775,7 +767,7 @@ tipe.delete()
           <button onclick="copiar('filter-sintax','33')" id="33">Copiar</button>
         </div>
         <li>
-          Algunos filtros, se ponen dentro del los parentesis del <b>filter(</b
+          Algunos filtros, se ponen dentro del los paréntesis del <b>filter(</b
           ><i>aqui</i><b>)</b>, en la documentacion puedo leer que más formas de
           aplicar filtros hay
         </li>
@@ -999,8 +991,115 @@ for i in obj:
         /></a>
       </div>
     </section>
+    <section>
+      <h2 id="video-14"><i>Video 14</i>: Configuración | Mi primera view</h2>
+      <ul>
+        <li>
+          El el archivo <b>views.py</b> de mi app, voy a configurar mis vistas,
+          las vistas deben retornar un <b>HttpResponse</b> siempre, ahora la
+          crearemos como una funcion, más adelante se aprenderan otras formas
+          para crear las vistas o <b>views</b>
+        </li>
+        <li>Importamos la clase <b>HttpResponse</b></li>
+        <div class="codigo">
+          <pre><code id="import-http">from django.http import HttpResponse</code></pre>
+          <button onclick="copiar('import-http','52')" id="52">Copiar</button>
+        </div>
+        <li>
+          Creamos la funcion, la cual retorna lo que queremos que se vea en el
+          <b>html</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="def-pri-view">def miPrimeraVista(request):
+  return HttpResponse('&lt;h1&gt;Mi primera vista&lt;/h1&gt;')
 
-    <h2><i>Video 14</i></h2>
+def vista2(request):
+  return HttpResponse('&lt;h1&gt;Vista 2&lt;/h1&gt;')
+</code></pre>
+          <button onclick="copiar('def-pri-view','53')" id="53">Copiar</button>
+        </div>
+        <li>
+          Agregamos la vista al archivo <b>urls.py</b> en la configuración,
+          importo mis las vistas de mi app
+        </li>
+        <div class="codigo">
+          <pre><code id="import-view-urls-c">from core.erp.views import *</code></pre>
+          <button onclick="copiar('import-view-urls-c','54')" id="54">
+            Copiar
+          </button>
+        </div>
+        <li>
+          En el <b>urlpatterns</b>, agregamos la vista o vistas de la siguiente
+          forma, en el primer parametro del <b>path</b>, pongo entre comillas la
+          url la cual le voy a poner la vista, siempre temina en "<b>/</b>", y
+          en el segundo parametro, va a ir la funcion que va a mostrar lo que ya
+          configuramos anteriormente, se pone sin paréntesis
+        </li>
+        <div class="codigo">
+          <pre><code id="path-pri-view">urlpatterns = [
+  path('primera/',miPrimeraVista)
+]</code></pre>
+          <button onclick="copiar('path-pri-view','55')" id="55">Copiar</button>
+        </div>
+
+        <li>
+          También puedo crear un archivo <b>urls.py</b> dentro de mi app, para
+          poner todas las vistas de esa app en un archivo <b>urls.py</b> y luego
+          incluirlos en el <b>urls.py</b> de la configuración
+        </li>
+        <li>
+          En el archivo creado, <b>urls.py</b> en la carpeta de mi app, import
+          el <b>path</b> y mis vistas
+        </li>
+        <div class="codigo">
+          <pre><code id="import-path-views-u">from django.urls import path
+from core.erp.views import *
+        </code></pre>
+          <button onclick="copiar('import-path-views-u','56')" id="56">
+            Copiar
+          </button>
+        </div>
+        <li>Creo el <b>urlpatterns</b>, agregandole la vista o vistas</li>
+        <div class="codigo">
+          <pre><code id="ulr-uno-dos">urlpatterns = [
+  path('uno/',miPrimeraVista),
+  path('dos/',vista2)
+]</code></pre>
+          <button onclick="copiar('ulr-uno-dos','57')" id="57">Copiar</button>
+        </div>
+        <li>
+          Puedo agregarlos a un link
+          <b>('prueba/uno/','prueba/dos/'), de la siguiente forma</b>
+        </li>
+        <li>
+          En el <b>urls.py</b> de la configuración, importo el <b>include</b>,
+          que es parte también del <b>django.urls</b>, y con el include, dentro
+          del <b>urlpatterns</b>, incluyo mi archivo <b>urls</b> de mi app, solo
+          se le pone el nombre del archivo, no la extensión
+        </li>
+        <div class="codigo">
+          <pre><code>
+from django.ulrs import path,include
+
+urlpatterns = [
+  path('admin/', admin.site.urls),
+  path('prueba/',include('core.erp.urls'))
+]</code></pre>
+        </div>
+        <li>
+          También se podia, importar las vistas con el <b>from</b>, y agregarlos
+          al <b>path</b>, pero es mejor de la forma anterior para cuando estemos
+          trabajando con varias apps en nuestro proyecto y tener el codigo de la
+          mejor forma
+        </li>
+      </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
+    </section>
+
     <h2><i>Video 15</i></h2>
     <h2><i>Video 16</i></h2>
     <h2><i>Video 17</i></h2>
