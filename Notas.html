@@ -15,6 +15,10 @@
         box-sizing: border-box;
         font-family: sans-serif;
       }
+      h1,
+      h2 {
+        color: mediumblue;
+      }
       .codigo {
         display: inline-flex;
         flex-direction: column;
@@ -43,11 +47,13 @@
         padding: 5px;
         border-radius: 5px;
       }
-      .indice a {
+      .indice a,
+      .link-videos {
         text-decoration: none;
         color: cornflowerblue;
       }
-      .indice a:hover {
+      .indice a:hover,
+      .link-videos:hover {
         color: red;
         border: 1px solid black;
         border-radius: 5px;
@@ -88,8 +94,8 @@
     <title>Notas Django</title>
   </head>
   <body>
-    <h1>Curso Django de AlgoriSoft</h1>
-    <h2>Contenido</h2>
+    <h1 style="color: black">Curso Django de AlgoriSoft</h1>
+    <h2 style="color: black">Contenido</h2>
     <details id="inicio" class="details-indice">
       <summary><span>Indice</span></summary>
       <ul class="indice">
@@ -110,7 +116,7 @@
         <li>
           <a href="#video-14">Video 14: Configuración | Mi primera view</a>
         </li>
-        <li><a href="#video-15">Video 15</a></li>
+        <li><a href="#video-15">Video 15: Templates | Parte I</a></li>
         <li><a href="#video-16">Video 16</a></li>
         <li><a href="#video-17">Video 17</a></li>
         <li><a href="#video-18">Video 18</a></li>
@@ -133,6 +139,12 @@
     </details>
     <section>
       <h2 id="video-5"><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=aYys7f6ulzE&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=5"
+        >Link del video 5</a
+      >
       <ul>
         <li>
           Abrir la terminal en VScode con ctrl + ñ o en la carpeta dar clic
@@ -252,6 +264,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     </section>
     <section>
       <h2 id="video-7"><i>Video 7</i>: Configurando la base de datos MySQL</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=Ey59K7Nj7ZA&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=7"
+        >Link del video 7</a
+      >
       <ul>
         <li>
           En la terminal (con el entorno activo), instalamos el cliente de mysql
@@ -320,6 +338,12 @@ DATABASES = db.MYSQL
     </section>
     <section>
       <h2 id="video-8"><i>Video 8</i>: Modelos | Parte I</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=_6Rjhyz-FH8&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=8"
+        >Link del video 8</a
+      >
       <h3>Crear aplicación</h3>
       <ul>
         <li>
@@ -543,6 +567,12 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
     </section>
     <section>
       <h2 id="video-9"><i>Video 9</i>: Modelos | Parte II</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=pgBn-M4Jrdo&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=9"
+        >Link del video 9</a
+      >
       <h3>Relacionar tablas</h3>
       <ul>
         <li>Creo las tablas a relacionar (1 a 1)</li>
@@ -640,6 +670,12 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
     </section>
     <section>
       <h2 id="video-10"><i>Video 10</i>: ORM | Parte I</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=Box_Vlr4pMA&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=10"
+        >Link del video 10</a
+      >
       <ul>
         <li>Haremos la practica del <b>ORM</b> en el archivo <b>test.py</b></li>
         <li>Importar lo siguiente para errores previos</li>
@@ -756,6 +792,12 @@ tipe.delete()
     </section>
     <section>
       <h2 id="video-11"><i>Video 11</i>: ORM II</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=4Pep_Yy2DNU&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=11"
+        >Link del video 11</a
+      >
       <ul>
         <li>
           Con el <b>filter()</b> podemos realizar consultas personalizadas, sin
@@ -855,6 +897,12 @@ for i in obj:
     </section>
     <section>
       <h2 id="video-12"><i>Video 12</i>: Git | Control de versiones</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=O_dD0oTNFSE&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=12"
+        >Link del video 12</a
+      >
       <ul>
         <li>Registrar tú PC, por clave <b>ssh</b> a tu repositorio personal</li>
         <ul style="list-style-type: square">
@@ -917,6 +965,12 @@ for i in obj:
     </section>
     <section>
       <h2 id="video-13"><i>Video 13</i>: Panel de administrador | SuperUser</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=1l0blAsF_lM&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=13"
+        >Link del video 13</a
+      >
       <ul>
         <li>
           Con el <b>admin.py</b> de mi app, puedo hacer diferentes funciones.
@@ -993,6 +1047,12 @@ for i in obj:
     </section>
     <section>
       <h2 id="video-14"><i>Video 14</i>: Configuración | Mi primera view</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=XmbqzmJuis0&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=14"
+        >Link del video 14</a
+      >
       <ul>
         <li>
           El el archivo <b>views.py</b> de mi app, voy a configurar mis vistas,
@@ -1099,8 +1159,91 @@ urlpatterns = [
         /></a>
       </div>
     </section>
+    <section>
+      <h2 id="video-15"><i>Video 15</i>: Templates | Parte I</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=S-8adY-Ocxo&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=15"
+        >Link del video 15</a
+      >
+      <ul>
+        <li>Los <b>template</b> son mis archivos <b>html</b> o plantillas</li>
+        <li>Configurando mi primer <b>template</b></li>
+        <ul style="list-style-type: square">
+          <li>
+            AL mismo nivel de la carpeta de configuración, creo una carpeta con
+            el nombre <b>templates</b>, ahi estaran mis archivos
+            <b>html</b> principales
+          </li>
+          <div class="codigo">
+            <pre><code>app/
+  config/
+    ...
+    settings.py
+    ...
+  templates/
+    Aqui hiran nuestros html</code></pre>
+          </div>
+          <li>
+            En el archivo <b>settings.py</b> de la carpeta de configuración,
+            importo la libreria de <b>os</b>, en la variable <b>TEMPLATES</b>,
+            en la clave <b>DIRS</b>, con la libreria <b>os</b>, ponemos la
+            direccion de nuestra carpeta <b>templates</b>
+          </li>
+          <div class="codigo">
+            <pre><code id="import-os-templa">import os #al inicio del archivo
+'DIRS': [os.path.join(BASE_DIR,'templates')],
+            </code></pre>
+            <button onclick="copiar('import-os-templa','58')" id="58">
+              Copiar
+            </button>
+          </div>
+          <li>
+            <b>BASE_DIR</b> es la variable que tiene la ruta raiz del del
+            proyecto, puedo ver su valor, con un <b>print(BASE_DIR)</b>
+          </li>
+        </ul>
+        <li>
+          Creamos un archivo <b>index.html</b> dentro de la carpeta
+          <b>templates</b>, haciendole una estrcutura básica
+        </li>
+        <li>
+          En el archivo <b>views.py</b> de nuestra app, en la función que
+          creamos, utilizamos la función <b>render</b> para utilizar el
+          <b>html</b>. La funcion, como siempre, debe recibir y retornar un
+          <b>request</b>, la variable <b>data</b> va a contener valores que
+          queramos mostrar en el html, en el cual desde ahi llamaremos ese
+          valor, con una sintaxis, la cual la funcion <b>render</b>, renderiza
+          ese html, en el segundo parametro del render, debemos poner el nombre
+          del html el cual vamos a renderizar, y el <b>data</b> de tercer
+          parametro
+        </li>
+        <div class="codigo">
+          <pre><code id="def-render">from django.shorcuts import render
+def vista(request):
+  data = {
+    'name':'yoiner'
+  }
+  return render(request,'index.html',data)
+          </code></pre><button onclick="copiar('def-render','59')" id="59">
+              Copiar
+            </button>
+        </div>
+        <li>En el html, puedo poner</li>
+        <div class="codigo">
+          <pre><code id="h1-def-render">&lt;h1&gt;Hola, {{name}}&lt;/h1&gt; </code></pre><button onclick="copiar('h1-def-render','60')" id="60">
+              Copiar
+            </button>
+        </div>
+        <li>De esta forma accedemos al valor <b>name</b>, del diccionario que le pasemos, importante, cualquier cosa que quieras pasarle al html y verlo ahi, debe estar dentro de un diccionario. La vista se va a ver, dependiendo en que url esta la función</li>
+      </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+    </section>
 
-    <h2><i>Video 15</i></h2>
     <h2><i>Video 16</i></h2>
     <h2><i>Video 17</i></h2>
     <h2><i>Video 18</i></h2>
