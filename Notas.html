@@ -117,8 +117,8 @@
           <a href="#video-14">Video 14: Configuración | Mi primera view</a>
         </li>
         <li><a href="#video-15">Video 15: Templates | Parte I</a></li>
-        <li><a href="#video-16">Video 16</a></li>
-        <li><a href="#video-17">Video 17</a></li>
+        <li><a href="#video-16">Video 16: Templates | Parte II</a></li>
+        <li><a href="#video-17">Video 17: Archivos estáticos | Configuración</a></li>
         <li><a href="#video-18">Video 18</a></li>
         <li><a href="#video-19">Video 19</a></li>
         <li><a href="#video-20">Video 20</a></li>
@@ -1243,10 +1243,100 @@ def vista(request):
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
     </section>
+<section><h2 id="video-16"><i>Video 16</i>: Templates | Parte II</h2>
+  <ul>
+    <li>Gracias al <b>render</b>, puedo utilizar codigo python dentro del <b>html</b>, utilizando los valores que le pase en la funcion</li>
+    <li>Por ejemplo, En la funcion puedo parsarle los valores de mis productos en la base de datos, importamos los modelos para poder utilizar el <b>ORM</b>, podemos insertar los datos con el <b>ORM</b> en el archivo de <b>test.py</b> o manual mente en la base de datos para hacer pruebas</li>
+    <div class="codigo">
+      <pre><code id="data-in-produ">from core.erp.models import *
+data = {'productos': Product.objects.all()}</code></pre>
+<button onclick="copiar('data-in-produ','61')" id="61">Copiar</button>
+    </div>
+    <li>Para recorrer o iterar esos valores y mostrarlos en html, vamos a utilizar un for y vamos a ponerlos en una lista</li>
+    <div class="codigo">
+      <pre><code id="for-in-html">&lt;ul&gt;
+  {% for i in productos %}
+  &lt;li&gt;{{i.id}} / {{i.name}} / {{i.cate.name}}&lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;</code></pre>
+<button onclick="copiar('for-in-html','62')" id="62">Copiar</button>
+    </div>
+    <li>Para los for o if, se utilizan un solo par corchete <b>{}</b> y siempre con sus <b>% %</b>, ademas hay que cerrarlos, por ejemplo, en el for rd <b>{% endfor%}</b></li>
+    <li>Para las variables o atributos, se utilizan los 2 {{}}, en el ejemplo, accediamos al <b>id</b> y <b>name</b> de cada producto, pero iban en {{}}, ejemplo: <b>{{i.id}}</b>, recuerda que en el for, cada <b>i</b> vale a un registro de la base de datos</li>
+    <li>En la parde de <b>i.cate.name</b>, <b>i</b> es el objeto/registro, el <b>cate</b>, hace referencia a la columna <b>cate</b>, que es la cual se relaciona con la clase/tabla <b>Category</b>, y cuando ponemos el <b>cate.name</b>, estamos diciendole que nos muestre el nombre de la categoria la cual pertenece ese producto, gracias a la relacion creada</li>
+    <li>Como hacer comentarios:</li>
+  <ul style="list-style-type: square;"><li>Comentarios de una sola linea, hay que tener cuaidado con el formateador de html que tengamos (prettier por ejemplo) porque si hace que el comentario tenga un salto de linea, lo mostrara en el html o lanzara un error</li><div class="codigo">
+    <pre><code id="comment-one-line">{# comentario de una linea #}</code></pre><button onclick="copiar('comment-one-line','63')" id="63">Copiar</button>
+  </div>
+<li>Comentario de varias lineas, este es mejor utilizarlo, ya que el inicio y cierre es corto y seria poco probable tener problema con el formateador</li>
+<div class="codigo">
+  <pre><code id="comment-varias-line">{% comment %}
+esto es
+un comentario
+de varias
+lineas
+{% endcomment %}
+  </code></pre><button onclick="copiar('comment-varias-line','64')" id="64">Copiar</button>
+</div>
+<li>No utilizar los comentarios originarios de html porque los va a intentar interpretar</li></ul>
+<h2>Herencia</h2>
+<li>Podemos heredar estructuras completas de otro html con la siguiente sintaxis, y de es forma no necesito repetir codigo, solo heredarlo</li>
+<div class="codigo">
+  <pre><code id="extends-index">{% extends 'index.html' %}</code></pre><button onclick="copiar('extends-index','65')" id="65">Copiar</button>
+</div>
+<h2>Bloques</h2>
+<li>Puedo crear bloques para que al heredarlos, pueda modificar partes, vamos a poner un bloque en el <b>index.html</b>, ponemos nombre <b>contenido</b> al bloque a crear, al inicio y final para saber donde cierra el bloque</li>
+<div class="codigo">
+  <pre><code id="index-heredar">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {% block contenido %} {% endblock contenido %}
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><button onclick="copiar('index-heredar','66')" id="66">Copiar</button>
+</div>
+<li>Para ejemplo, en ese bloque de <b>index.html</b>, vamos a dejar el for recorriendo los productos, pero dentro del bloque que creamos, y vamos a crear un segundo html llamado <b>second.html</b>, creamos la funcion para ese html y le pasamos los valores que tenga nuestra clase/tabla categoria, de la misma forma en como hicimos los productos</li>
+<li><b>second.html</b>, en el data de la funcion de second.html, ponemos <b>categorias</b> donde vamos a poner las categorias llamadas. En el html, heredamos de <b>index.html</b>, toda su estructura, luego ponemos el bloque, el cual en el <b>index.html</b> estan los productos, pero en este html pusimos las categorias, gracias a utilizar un bloque</li>
+<div class="codigo">
+  <pre><code id="second-heredado">{% extends 'index.html' %}
+{% block contenido %}
+  &lt;h1&gt;Mis categorias&lt;/h1&gt;
+  &lt;ul&gt;{% for i in categorias %} 
+    &lt;li&gt;{{i.id}} / {{i.name}}&lt;/li&gt; 
+  {% endfor %}&lt;/ul&gt;
+{% endblock contenido %}
+  </code></pre><button onclick="copiar('second-heredado','67')" id="67">Copiar</button>
+</div>
+<li>Es bastante útil, porque puedo estructurar un documento html como base, o bases para que nomas las apps hereden y pongan en los bloques lo que necesiten, y los bloques se pueden poner en cualquier lado</li>
+<h2>Enlaces internos</h2>
+<li>En el archivo urls.py de mi app o apps, puedo agregar la variable <b>app_name = 'nombreApp'</b>, donde <b>nombreApp</b> lo pondre com <b>erp</b>, para que en los enlaces pueda dirigirme especificamente a una vista de mis apps</li>
+<li>En el tercer parametro de la funcion <b>path</b>, puedo ponerle un nombre para dirigirme mejor a esa vista</li>
+<div class="codigo">
+  <pre><code id="path-name">path('uno/',FuncioVista,name='vista1')</code></pre><button onclick="copiar('path-name','68')" id="68">Copiar</button>
+</div>
+<li>Y en otro html, para dirigirme a ese html o vista, lo haria de la siguiente forma, donde <b>erp</b> es el nombre de las urls de mi app en especifica, y vista1, el <b>name</b> de la vista, y asi puedo manejar mis enlaces internos</li>
+<div class="codigo">
+  <pre><code id="a-erp-vista">&lt;a href="{% url 'erp:vista1' %}"&gt;Vista 1&lt;/a&gt;</code></pre><button onclick="copiar('a-erp-vista','69')" id="69">Copiar</button>
+</div>
+<li>Tambien puedo hacerlo desde el <b>urls.py</b> de la configuración, en el <b>urlpatterns</b>, si es una vista nomral, le agrego el <b>name</b> a esa vista, pero si esta con el include, le agrego el <b>namespace</b> que seria como el <b>app_name</b> en el <b>ulrs.py</b> de mi app, es recomendable siempre ponerles el <b>name</b>, el <b>namespace</b> o la variable <b>app_name</b>, para ser más coherentes en los enlaces internos</li>
+<div class="codigo">
+  <pre><code id="path-namespace">path('hola/',include('core.erp.urls',namespace='erp'))</code></pre><button onclick="copiar('path-namespace','70')" id="70">Copiar</button>
+</div>
+  </ul>
+<div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+</section>
+<section>
+  <h2 id="video-17"><i>Video 17</i>: Archivos estáticos | Configuración</h2>
+  <p class="nota"><b>NOTA:</b> Cuando los estilos de css no se apliquen, solo presionar <b>Ctrl + F5</b> en el navegador para limpiar el cache de la pagina y recargar, asi se aplicaran los estilos puestos</p>
+</section>
 
-    <h2><i>Video 16</i></h2>
-    <h2><i>Video 17</i></h2>
-    <h2><i>Video 18</i></h2>
+    <h2><i>Video 18</i></h2> 
     <h2><i>Video 19</i></h2>
     <h2><i>Video 20</i></h2>
     <h2><i>Video 21</i></h2>
