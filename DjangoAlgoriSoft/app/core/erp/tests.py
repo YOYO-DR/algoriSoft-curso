@@ -20,9 +20,9 @@ from core.erp.models import *
 # Listar (consultar)
 # select * from tabla
 
-query = Type.objects.all()
+# query = Type.objects.all()
 
-print(query)
+# print(query)
 
 # asi inserto los datos con el ORM
 # insercion (insertar)
@@ -82,3 +82,15 @@ print(query)
 # print(obj)
 
 # en la documentacion de Django, puedo buscar todas las funciones que puede realizar la funcion filter()
+
+# producto = Product()
+# producto.name='Ibuprofeno'
+# producto.cate=Category(id=2)
+# producto.pvp=1500.99
+# producto.save()
+
+
+query = Product.objects.all()
+
+for i in query:
+    print(f'Producto: {i.name} - Categoria: {i.cate.name}')

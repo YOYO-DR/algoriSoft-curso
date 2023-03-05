@@ -95,6 +95,10 @@
   </head>
   <body>
     <h1 id="inicio" style="color: black">Curso Django de AlgoriSoft</h1>
+    <p class="nota">
+      <b>NOTA:</b> Ir viendo los videos acorde como leen mis anotaciones, que
+      son de apoyo
+    </p>
     <h2 style="color: black">Contenido</h2>
     <details class="details-indice">
       <summary><span>Indice</span></summary>
@@ -121,7 +125,11 @@
         <li>
           <a href="#video-17">Video 17: Archivos estáticos | Configuración</a>
         </li>
-        <li><a href="#video-18">Video 18</a></li>
+        <li>
+          <a href="#video-18"
+            >Video 18: Templates | integrando la plantilla adminLTE3</a
+          >
+        </li>
         <li><a href="#video-19">Video 19</a></li>
         <li><a href="#video-20">Video 20</a></li>
         <li><a href="#video-21">Video 21</a></li>
@@ -975,6 +983,98 @@ for i in obj:
       >
       <ul>
         <li>
+          Ahora en adelante, en el curso se va a trabajar con los siguientes
+          modelos para el proyecto final
+        </li>
+        <div class="codigo">
+          <pre><code id="models-a-traba">from django.db import models
+from datetime import datetime
+
+gender_choices = (
+    ('male','Masculino'),
+    ('female','Femenino'),
+)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
+
+    def __str__(self):
+        return 'Nombre: {}'.format(self.name)
+
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+        ordering = ['id']
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
+    cate = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='product/%Y/%m/%d', null=True, blank=True)
+    pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Producto'
+        verbose_name_plural = 'Productos'
+        ordering = ['id']
+
+
+class Client(models.Model):
+    names = models.CharField(max_length=150, verbose_name='Nombres')
+    surnames = models.CharField(max_length=150, verbose_name='Apellidos')
+    dni = models.CharField(max_length=10, unique=True, verbose_name='Dni')
+    birthday = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
+    address = models.CharField(max_length=150, null=True, blank=True, verbose_name='Dirección')
+    sexo = models.CharField(max_length=10, choices=gender_choices, default='male', verbose_name='Sexo')
+
+    def __str__(self):
+        return self.names
+
+    class Meta:
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Clientes'
+        ordering = ['id']
+
+
+class Sale(models.Model):
+    cli = models.ForeignKey(Client, on_delete=models.CASCADE)
+    date_joined = models.DateField(default=datetime.now)
+    subtotal = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+    iva = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+    total = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+
+    def __str__(self):
+        return self.cli.names
+
+    class Meta:
+        verbose_name = 'Venta'
+        verbose_name_plural = 'Ventas'
+        ordering = ['id']
+
+
+class DetSale(models.Model):
+    sale = models.ForeignKey(Sale, on_delete=models.CASCADE)
+    prod = models.ForeignKey(Product, on_delete=models.CASCADE)
+    price = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+    cant = models.IntegerField(default=0)
+    subtotal = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+
+    def __str__(self):
+        return self.prod.name
+
+    class Meta:
+        verbose_name = 'Detalle de Venta'
+        verbose_name_plural = 'Detalle de Ventas'
+        ordering = ['id']</code></pre>
+          <button onclick="copiar('models-a-traba','a1')" id="a1">
+            Copiar
+          </button>
+        </div>
+        <li>
           Con el <b>admin.py</b> de mi app, puedo hacer diferentes funciones.
           Para ver el panel de administrador, primero debo haber hecho las
           migraciones, luego con el <b>manage.py</b> creo el super usuario
@@ -1271,7 +1371,7 @@ def vista(request):
         </li>
         <div class="codigo">
           <pre><code id="data-in-produ">from core.erp.models import *
-data = {'productos': Product.objects.all()}</code></pre>
+data = {'productos':Product.objects.all()}</code></pre>
           <button onclick="copiar('data-in-produ','61')" id="61">Copiar</button>
         </div>
         <li>
@@ -1300,8 +1400,8 @@ data = {'productos': Product.objects.all()}</code></pre>
         <li>
           En la parde de <b>i.cate.name</b>, <b>i</b> es el objeto/registro, el
           <b>cate</b>, hace referencia a la columna <b>cate</b>, que es la cual
-          se relaciona con la clase/tabla <b>Category</b>, y cuando ponemos el
-          <b>cate.name</b>, estamos diciendole que nos muestre el nombre de la
+          se relaciona con la clase/tabla <b>Type</b>, y cuando ponemos el
+          <b>cate.name</b>, estamos diciendole que nos muestre el de la
           categoria la cual pertenece ese producto, gracias a la relacion creada
         </li>
         <li>Como hacer comentarios:</li>
@@ -1451,14 +1551,98 @@ lineas
     </section>
     <section>
       <h2 id="video-17"><i>Video 17</i>: Archivos estáticos | Configuración</h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=mqU-RszsDvY&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=17"
+        >Link del video 17</a
+      >
+
+      <ul>
+        <li>
+          Los archivos estaticos son las imagenes, archivos de Javascript, de
+          CSS, osea, los estilos y librerias como bootstrap
+        </li>
+        <li>
+          Al nivel de la carpeta de configuración, creamos la carpeta
+          <b>static</b>, como con los <b>templates</b>
+        </li>
+        <li>
+          En el <b>settings.py</b> de nuestro proyecto, creamos una variable
+          para poner la ruta de nuestros archivos estaticos, despues de la
+          variable <b>STATIC_URL</b>
+        </li>
+        <div class="codigo">
+          <pre><code id="static-config-dir">STATICFILES_DIRS = [
+  os.path.join(BASE_DIR,"static")
+  ]
+</code></pre>
+          <button onclick="copiar('static-config-dir','71')" id="71">
+            Copiar
+          </button>
+        </div>
+        <li>
+          Para utilizar los archivos estaticos en algun html, en la primera
+          linea del html, debemos poner
+        </li>
+        <div class="codigo">
+          <pre><code>{% load static %}</code></pre>
+        </div>
+        <li>Esto cargara los archivo estaticos</li>
+        <li>
+          Dentro de la carpeta <b>static</b>, creamos las carpetas las cuales
+          van a tener los archivos, en mi caso, creare las carpetas así
+        </li>
+        <ul style="list-style-type: square">
+          <li><b>css:</b> Para los estilos</li>
+          <li><b>js:</b> Para los archivos de Javascript</li>
+          <li>
+            <b>media:</b> Para las imagenes, audios, y videos, los cuales
+            tambien creo una carpeta para cada uno dentro de media para un mejor
+            orden
+          </li>
+          <li>
+            <b>lib:</b> Para las librerias que vaya a utilizar, es recomendable
+            descargar las librerias y no utilizarlas de forma remota, para
+            trabajar siempre con una version y no tener problemas si llega a
+            haber una actualización en la libreria y tengamos problemas internos
+            en nuestro codigo
+          </li>
+        </ul>
+        <li>
+          Ya en los html, en los links hacia archivos <b>(src, href)</b>, no
+          llamamos a la carpeta static, sino que iniciamos llamando desde las
+          carpetas secundarias, pondriamos así
+        </li>
+        <div class="codigo">
+          <pre><code>src = "{% static 'js/app.js'" %}
+href = "{% static 'css/style.css' %}"
+src = "{% static 'media/video/hola.mp4' %}"</code></pre>
+        </div>
+      </ul>
+
       <p class="nota">
         <b>NOTA:</b> Cuando los estilos de css no se apliquen, solo presionar
         <b>Ctrl + F5</b> en el navegador para limpiar el cache de la pagina y
         recargar, asi se aplicaran los estilos puestos
       </p>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </section>
-
-    <h2><i>Video 18</i></h2>
+    <section>
+      <h2 id="video-18">
+        <i>Video 18</i>: Templates | integrando la plantilla adminLTE3
+      </h2>
+      <a
+        target="_blank"
+        class="link-videos"
+        href="https://www.youtube.com/watch?v=Nsrs_3UEPmQ&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=18"
+        >Link del video 18</a
+      >
+    </section>
     <h2><i>Video 19</i></h2>
     <h2><i>Video 20</i></h2>
     <h2><i>Video 21</i></h2>
