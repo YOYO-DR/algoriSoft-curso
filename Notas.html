@@ -5,92 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body,
-      body::after,
-      body::before {
-        box-sizing: border-box;
-        font-family: sans-serif;
-      }
-      h1,
-      h2 {
-        color: mediumblue;
-      }
-      .codigo {
-        display: inline-flex;
-        flex-direction: column;
-        background-color: black;
-        color: white;
-        border-radius: 5px;
-        align-items: flex-start;
-        margin: 10px 0;
-      }
-      .codigo pre {
-        padding: 10px 10px 0 10px;
-      }
-      .codigo button {
-        height: 20px;
-        color: white;
-        background-color: rgb(78, 76, 76);
-        border-bottom-left-radius: 5px;
-        border-top-right-radius: 5px;
-        cursor: pointer;
-      }
-      .codigo button:hover {
-        color: rgb(29, 200, 29);
-      }
-      .nota {
-        background-color: rgb(195, 191, 191);
-        padding: 5px;
-        border-radius: 5px;
-      }
-      .indice a,
-      .link-videos {
-        text-decoration: none;
-        color: cornflowerblue;
-      }
-      .indice a:hover,
-      .link-videos:hover {
-        color: red;
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 1px;
-      }
-      .details-indice span {
-        cursor: pointer;
-        background-color: red;
-        border-radius: 5px;
-        padding: 3px;
-        color: white;
-        user-select: none;
-      }
-      .details-indice {
-        display: inline-flex;
-      }
-      .details-indice span:hover {
-        border: 1px solid red;
-        color: black;
-        background-color: white;
-      }
-      .flecha-arriba {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-      }
-      .flecha-arriba img {
-        width: 40px;
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 0 60px;
-        background-color: green;
-      }
-      .flecha-arriba img:hover {
-        background-color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
     <title>Notas Django</title>
   </head>
   <body>
@@ -147,8 +62,12 @@
         <li><a href="#video-33">Video 33</a></li>
       </ul>
     </details>
-    <section>
-      <h2 id="video-5"><i>Video 5</i>: Crear proyecto de Django con el CMD</h2>
+    <details>
+      <summary class="videos-titulo" id="video-5">
+        <h2 class="titulo-videos">
+          <i>Video 5</i>: Crear proyecto de Django con el CMD
+        </h2>
+      </summary>
       <a
         target="_blank"
         class="link-videos"
@@ -271,9 +190,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-7"><i>Video 7</i>: Configurando la base de datos MySQL</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-7">
+        <h2><i>Video 7</i>: Configurando la base de datos MySQL</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -345,9 +267,11 @@ DATABASES = db.MYSQL
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-8"><i>Video 8</i>: Modelos | Parte I</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-8">
+        <h2><i>Video 8</i>: Modelos | Parte I</h2>
+      </summary>
       <a
         target="_blank"
         class="link-videos"
@@ -574,9 +498,11 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-9"><i>Video 9</i>: Modelos | Parte II</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-9">
+        <h2><i>Video 9</i>: Modelos | Parte II</h2>
+      </summary>
       <a
         target="_blank"
         class="link-videos"
@@ -677,9 +603,12 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-10"><i>Video 10</i>: ORM | Parte I</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-10">
+        <h2><i>Video 10</i>: ORM | Parte I</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -799,9 +728,11 @@ tipe.delete()
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-11"><i>Video 11</i>: ORM II</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-11">
+        <h2><i>Video 11</i>: ORM II</h2>
+      </summary>
       <a
         target="_blank"
         class="link-videos"
@@ -904,9 +835,11 @@ for i in obj:
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-12"><i>Video 12</i>: Git | Control de versiones</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-12">
+        <h2><i>Video 12</i>: Git | Control de versiones</h2>
+      </summary>
       <a
         target="_blank"
         class="link-videos"
@@ -972,9 +905,12 @@ for i in obj:
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-13"><i>Video 13</i>: Panel de administrador | SuperUser</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-13">
+        <h2><i>Video 13</i>: Panel de administrador | SuperUser</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -1146,9 +1082,12 @@ class DetSale(models.Model):
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-14"><i>Video 14</i>: Configuración | Mi primera view</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-14">
+        <h2><i>Video 14</i>: Configuración | Mi primera view</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -1260,9 +1199,12 @@ urlpatterns = [
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-15"><i>Video 15</i>: Templates | Parte I</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-15">
+        <h2><i>Video 15</i>: Templates | Parte I</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -1348,9 +1290,12 @@ def vista(request):
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-16"><i>Video 16</i>: Templates | Parte II</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-16">
+        <h2><i>Video 16</i>: Templates | Parte II</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -1548,9 +1493,12 @@ lineas
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-17"><i>Video 17</i>: Archivos estáticos | Configuración</h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-17">
+        <h2><i>Video 17</i>: Archivos estáticos | Configuración</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
@@ -1631,117 +1579,480 @@ src = "{% static 'media/video/hola.mp4' %}"</code></pre>
           ><img src="media/img/deslizar-hacia-arriba.png" alt=""
         /></a>
       </div>
-    </section>
-    <section>
-      <h2 id="video-18">
-        <i>Video 18</i>: Templates | integrando la plantilla adminLTE3
-      </h2>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-18">
+        <h2><i>Video 18</i>: Templates | integrando la plantilla adminLTE3</h2>
+      </summary>
+
       <a
         target="_blank"
         class="link-videos"
         href="https://www.youtube.com/watch?v=Nsrs_3UEPmQ&list=PLxm9hnvxnn-j5ZDOgQS63UIBxQytPdCG7&index=18"
         >Link del video 18</a
       >
-    </section>
-    <h2><i>Video 19</i></h2>
-    <h2><i>Video 20</i></h2>
-    <h2><i>Video 21</i></h2>
-    <h2><i>Video 22</i></h2>
-    <h2><i>Video 23</i></h2>
-    <h2><i>Video 24</i></h2>
-    <h2><i>Video 25</i></h2>
-    <h2><i>Video 26</i></h2>
-    <h2><i>Video 27</i></h2>
-    <h2><i>Video 28</i></h2>
-    <h2><i>Video 29</i></h2>
-    <h2><i>Video 30</i></h2>
-    <h2><i>Video 31</i></h2>
-    <h2><i>Video 32</i></h2>
-    <h2><i>Video 33</i></h2>
-    <h2><i>Video 34</i></h2>
-    <h2><i>Video 35</i></h2>
-    <h2><i>Video 36</i></h2>
-    <h2><i>Video 37</i></h2>
-    <h2><i>Video 38</i></h2>
-    <h2><i>Video 39</i></h2>
-    <h2><i>Video 40</i></h2>
-    <h2><i>Video 41</i></h2>
-    <h2><i>Video 42</i></h2>
-    <h2><i>Video 43</i></h2>
-    <h2><i>Video 44</i></h2>
-    <h2><i>Video 45</i></h2>
-    <h2><i>Video 46</i></h2>
-    <h2><i>Video 47</i></h2>
-    <h2><i>Video 48</i></h2>
-    <h2><i>Video 49</i></h2>
-    <h2><i>Video 50</i></h2>
-    <h2><i>Video 51</i></h2>
-    <h2><i>Video 52</i></h2>
-    <h2><i>Video 53</i></h2>
-    <h2><i>Video 54</i></h2>
-    <h2><i>Video 55</i></h2>
-    <h2><i>Video 56</i></h2>
-    <h2><i>Video 57</i></h2>
-    <h2><i>Video 58</i></h2>
-    <h2><i>Video 59</i></h2>
-    <h2><i>Video 60</i></h2>
-    <h2><i>Video 61</i></h2>
-    <h2><i>Video 62</i></h2>
-    <h2><i>Video 63</i></h2>
-    <h2><i>Video 64</i></h2>
-    <h2><i>Video 65</i></h2>
-    <h2><i>Video 66</i></h2>
-    <h2><i>Video 67</i></h2>
-    <h2><i>Video 68</i></h2>
-    <h2><i>Video 69</i></h2>
-    <h2><i>Video 70</i></h2>
-    <h2><i>Video 71</i></h2>
-    <h2><i>Video 72</i></h2>
-    <h2><i>Video 73</i></h2>
-    <h2><i>Video 74</i></h2>
-    <h2><i>Video 75</i></h2>
-    <h2><i>Video 76</i></h2>
-    <h2><i>Video 77</i></h2>
-    <h2><i>Video 78</i></h2>
-    <h2><i>Video 79</i></h2>
-    <h2><i>Video 80</i></h2>
-    <h2><i>Video 81</i></h2>
-    <h2><i>Video 82</i></h2>
-    <h2><i>Video 83</i></h2>
-    <h2><i>Video 84</i></h2>
-    <h2><i>Video 85</i></h2>
-    <h2><i>Video 86</i></h2>
-    <h2><i>Video 87</i></h2>
-    <h2><i>Video 88</i></h2>
-    <h2><i>Video 89</i></h2>
-    <h2><i>Video 90</i></h2>
-    <h2><i>Video 91</i></h2>
-    <h2><i>Video 92</i></h2>
-    <h2><i>Video 93</i></h2>
-    <h2><i>Video 94</i></h2>
-    <h2><i>Video 95</i></h2>
-    <h2><i>Video 96</i></h2>
-    <h2><i>Video 97</i></h2>
-    <h2><i>Video 98</i></h2>
-    <h2><i>Video 99</i></h2>
-    <h2><i>Video 100</i></h2>
-    <h2><i>Video 101</i></h2>
-    <h2><i>Video 102</i></h2>
-    <h2><i>Video 103</i></h2>
-    <h2><i>Video 104</i></h2>
-    <h2><i>Video 105</i></h2>
-    <h2><i>Video 106</i></h2>
-    <h2><i>Video 107</i></h2>
-    <h2><i>Video 108</i></h2>
-    <h2><i>Video 109</i></h2>
-    <section>
-      <h2><i>Video 110</i></h2>
-      <div class="flecha-arriba">
-        <a href="#inicio"
-          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
-        /></a>
-      </div>
-    </section>
+    </details>
+
+    <details>
+      <summary class="videos-titulo" id="video-19">
+        <h2><i>Video 19</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-20">
+        <h2><i>Video 20</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-21">
+        <h2><i>Video 21</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-22">
+        <h2><i>Video 22</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-23">
+        <h2><i>Video 23</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-24">
+        <h2><i>Video 24</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-25">
+        <h2><i>Video 25</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-26">
+        <h2><i>Video 26</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-27">
+        <h2><i>Video 27</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-28">
+        <h2><i>Video 28</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-29">
+        <h2><i>Video 29</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-30">
+        <h2><i>Video 30</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-31">
+        <h2><i>Video 31</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-32">
+        <h2><i>Video 32</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-33">
+        <h2><i>Video 33</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-34">
+        <h2><i>Video 34</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-35">
+        <h2><i>Video 35</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-36">
+        <h2><i>Video 36</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-37">
+        <h2><i>Video 37</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-38">
+        <h2><i>Video 38</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-39">
+        <h2><i>Video 39</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-40">
+        <h2><i>Video 40</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-41">
+        <h2><i>Video 41</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-42">
+        <h2><i>Video 42</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-43">
+        <h2><i>Video 43</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-44">
+        <h2><i>Video 44</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-45">
+        <h2><i>Video 45</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-46">
+        <h2><i>Video 46</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-47">
+        <h2><i>Video 47</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-48">
+        <h2><i>Video 48</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-49">
+        <h2><i>Video 49</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-50">
+        <h2><i>Video 50</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-51">
+        <h2><i>Video 51</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-52">
+        <h2><i>Video 52</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-53">
+        <h2><i>Video 53</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-54">
+        <h2><i>Video 54</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-55">
+        <h2><i>Video 55</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-56">
+        <h2><i>Video 56</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-57">
+        <h2><i>Video 57</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-58">
+        <h2><i>Video 58</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-59">
+        <h2><i>Video 59</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-60">
+        <h2><i>Video 60</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-61">
+        <h2><i>Video 61</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-62">
+        <h2><i>Video 62</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-63">
+        <h2><i>Video 63</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-64">
+        <h2><i>Video 64</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-65">
+        <h2><i>Video 65</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-66">
+        <h2><i>Video 66</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-67">
+        <h2><i>Video 67</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-68">
+        <h2><i>Video 68</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-69">
+        <h2><i>Video 69</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-70">
+        <h2><i>Video 70</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-71">
+        <h2><i>Video 71</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-72">
+        <h2><i>Video 72</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-73">
+        <h2><i>Video 73</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-74">
+        <h2><i>Video 74</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-75">
+        <h2><i>Video 75</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-76">
+        <h2><i>Video 76</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-77">
+        <h2><i>Video 77</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-78">
+        <h2><i>Video 78</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-79">
+        <h2><i>Video 79</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-80">
+        <h2><i>Video 80</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-81">
+        <h2><i>Video 81</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-82">
+        <h2><i>Video 82</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-83">
+        <h2><i>Video 83</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-84">
+        <h2><i>Video 84</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-85">
+        <h2><i>Video 85</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-86">
+        <h2><i>Video 86</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-87">
+        <h2><i>Video 87</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-88">
+        <h2><i>Video 88</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-89">
+        <h2><i>Video 89</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-90">
+        <h2><i>Video 90</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-91">
+        <h2><i>Video 91</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-92">
+        <h2><i>Video 92</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-93">
+        <h2><i>Video 93</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-94">
+        <h2><i>Video 94</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-95">
+        <h2><i>Video 95</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-96">
+        <h2><i>Video 96</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-97">
+        <h2><i>Video 97</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-98">
+        <h2><i>Video 98</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-99">
+        <h2><i>Video 99</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-100">
+        <h2><i>Video 100</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-101">
+        <h2><i>Video 101</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-102">
+        <h2><i>Video 102</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-103">
+        <h2><i>Video 103</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-104">
+        <h2><i>Video 104</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-105">
+        <h2><i>Video 105</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-106">
+        <h2><i>Video 106</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-107">
+        <h2><i>Video 107</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-108">
+        <h2><i>Video 108</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-109">
+        <h2><i>Video 109</i></h2>
+      </summary>
+    </details>
+    <details>
+      <summary class="videos-titulo" id="video-110">
+        <h2><i>Video 110</i></h2>
+      </summary>
+    </details>
 
     <script>
       function copiar(idValor, idBoton) {
@@ -1753,6 +2064,15 @@ src = "{% static 'media/video/hola.mp4' %}"</code></pre>
           boton.textContent = "Copiar";
         }, 3000);
       }
+      window.onload = function () {
+        var hash = window.location.hash.substring(1); // Obtener el ID del hash de la URL
+        if (hash) {
+          var detalle = document.getElementById(hash);
+          if (detalle) {
+            detalle.setAttribute("open", "open"); // Mostrar el detalle
+          }
+        }
+      };
     </script>
   </body>
 </html>
