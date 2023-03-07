@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vista 2</title>
-  </head>
-  <body>
-    {% block contenido%}
-    <h1>Productos</h1>
-    <ul style="list-style-type: square">
-      {% for i in productos %}
-      <li>
-        <b>Id:</b> {{i.id}}, <b>Producto:</b> {{i.name}},
-        <b>Categoria:</b> {{i.cate.name}}
-      </li>
-      {% endfor %}
-    </ul>
-    <a href="{% url 'erp:vista3' %}">Categorias</a> {% endblock contenido %}
-  </body>
-</html>
+{% extends 'home.html' %} {% block content %}
+<h1>Hola</h1>
+{% endblock content %}

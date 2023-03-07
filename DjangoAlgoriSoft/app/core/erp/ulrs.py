@@ -5,6 +5,6 @@ app_name='erp'
 
 urlpatterns = [
   path('uno/',miPrimeraVista),
-  path('dos/',vista2,name='vista2'),
-  path('tres/',vista3,name='vista3')
+  path('dos/',vista2),
+  # path('tres/',vista3,name='vista3')
 ]
