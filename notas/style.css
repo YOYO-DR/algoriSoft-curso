@@ -50,6 +50,13 @@ details {
 }
 .indice {
   display: flex;
+  width: 100vw;
+}
+.indice div {
+  width: 20%;
+}
+.indice div:nth-child(1) {
+  width: 38%;
 }
 .indice a,
 .link-videos {
