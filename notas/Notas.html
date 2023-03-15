@@ -743,19 +743,7 @@ date_joined = models.DateField(default=datetime.now, verbose_name='Fecha')</code
         <li>Haremos la practica del <b>ORM</b> en el archivo <b>test.py</b></li>
         <li>Importar lo siguiente para errores previos</li>
         <div class="codigo">
-          <pre><code id="errores-pre-test">import sys
-sys.path.append('../../')
-
-# Traceback (most recent call last):
-#   File "f:\programacion\Proyectos\AdminTrading\Online\Django\app\core\list_ope\tests.py", line 3, in &lt;module&gt;
-#     from core.list_ope.models import *
-# ModuleNotFoundError: No module named 'core.list_ope'
-
-#para ese error, si de la forma anterior no funciona entonces pongo la ruta del proyecto completa
-# ejem: 
-# sys.path.append('f:/programacion/Proyectos/Django/app/')
-
-from config.wsgi import *
+          <pre><code id="errores-pre-test">from config.wsgi import *
 #Para el problema de: django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS,
 # but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.
 # configure() before accessing settings.</code></pre>
@@ -763,6 +751,39 @@ from config.wsgi import *
             Copiar
           </button>
         </div>
+        <li>
+          Si les sale el siguiente error, tienen que modificar o crear la
+          variable de entorno PYTHONPATH y ponerla su valor, la ruta de la
+          carpeta principal del proyecto (la que contiene todo el proyecto), se
+          hace con los siguientes pasos
+        </li>
+        <div class="codigo">
+          <pre><code>Traceback (most recent call last):
+File "f:\programacion\Proyectos\AdminTrading\Online\Django\app\core\list_ope\tests.py", line 3, in &lt;module&gt;
+from core.list_ope.models import *
+ModuleNotFoundError: No module named 'core.list_ope'</code></pre>
+        </div>
+        <ul style="list-style-type: square">
+          <li>
+            En el buscador, buscamos y abrimos "editar las variables de entono
+            del sistema"
+          </li>
+          <li>Le damos clic en "variables de entorno..."</li>
+          <li>
+            En la primera tabla de arriba, buscamos <b>PYTHONPATH</b>, lo
+            creamos, y si esta creada, la seleccionamos y le damos clic en
+            "Editar..."
+          </li>
+          <li>Le damos clic en "Examinar directorio..."</li>
+          <li>
+            Buscamos la carpeta que contiene el proyecto, en mi caso <b>app</b>,
+            la seleccionamos, le damos en aceptar en todo
+          </li>
+          <li>
+            Luego, en VScode, guardamos lo que tengamos y luego cerramos y
+            volvemos a abrir y funciona normal
+          </li>
+        </ul>
         <li>
           Importamos los modelos, <b>core.erp</b> son las carpetas donde esta mi
           app, e importamos todo <b>(import *)</b>
@@ -1944,7 +1965,7 @@ src = "{% static 'media/video/hola.mp4' %}"</code></pre>
           </li>
           <div class="codigo">
             <pre><code>DELETE FROM tabla;
-            ALTER TABLE tabla AUTO_INCREMENT = 1; 
+ALTER TABLE tabla AUTO_INCREMENT = 1; 
           </code></pre>
           </div>
         </ul>
@@ -2013,536 +2034,1013 @@ src = "{% static 'media/video/hola.mp4' %}"</code></pre>
 
     <details>
       <summary class="videos-titulo" id="video-22">
-        <h2><i>Video 22</i></h2>
+        <h2>
+          <i>Video 22</i>: Sobreescritura del metodo dispatch | Vistas basadas
+          en clases
+        </h2>
       </summary>
+      <ul>
+        <li>
+          Con el metodo <b>dispatch</b> accedo al metodo del como se realizan
+          las peticiones (get, pos, pull, delete)
+        </li>
+        <li>Estructura basica del dispatch</li>
+        <div class="codigo">
+          <pre><code id="a4">def dispatch(self, request,*args,**kwargs):
+  return super().dispatch(request, *args, **kwargs)
+</code></pre>
+          <button onclick="copiar('a4','77')" id="77">Copiar</button>
+        </div>
+        <li>
+          Preguntar que metodo del request se esta realizando, con ese if
+          pregunto que metodo del request se esta realizando, y si es
+          <b>GET</b>, con esa función redirect envio la pagina a otra que yo
+          quiera, en este caso, a la vista 2 de la app erp, despues de la
+          prueba, comentamos para seguir con el curso
+        </li>
+        <div class="codigo">
+          <pre><code id="a5">if request.method == 'GET':
+  from django.shortcuts import redirect
+  return redirect('erp:vista2')
+          </code></pre>
+          <button onclick="copiar('a5','76')" id="76">Copiar</button>
+        </div>
+      </ul>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-23">
-        <h2><i>Video 23</i></h2>
+        <h2>
+          <i>Video 23</i>: Implementando decoradores | Vistas basadas en clases
+        </h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-24">
         <h2><i>Video 24</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-25">
         <h2><i>Video 25</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-26">
         <h2><i>Video 26</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-27">
         <h2><i>Video 27</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-28">
         <h2><i>Video 28</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-29">
         <h2><i>Video 29</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-30">
         <h2><i>Video 30</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-31">
         <h2><i>Video 31</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-32">
         <h2><i>Video 32</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-33">
         <h2><i>Video 33</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-34">
         <h2><i>Video 34</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-35">
         <h2><i>Video 35</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-36">
         <h2><i>Video 36</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-37">
         <h2><i>Video 37</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-38">
         <h2><i>Video 38</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-39">
         <h2><i>Video 39</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-40">
         <h2><i>Video 40</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-41">
         <h2><i>Video 41</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-42">
         <h2><i>Video 42</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-43">
         <h2><i>Video 43</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-44">
         <h2><i>Video 44</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-45">
         <h2><i>Video 45</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-46">
         <h2><i>Video 46</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-47">
         <h2><i>Video 47</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-48">
         <h2><i>Video 48</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-49">
         <h2><i>Video 49</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-50">
         <h2><i>Video 50</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-51">
         <h2><i>Video 51</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-52">
         <h2><i>Video 52</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-53">
         <h2><i>Video 53</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-54">
         <h2><i>Video 54</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-55">
         <h2><i>Video 55</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-56">
         <h2><i>Video 56</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-57">
         <h2><i>Video 57</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-58">
         <h2><i>Video 58</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-59">
         <h2><i>Video 59</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-60">
         <h2><i>Video 60</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-61">
         <h2><i>Video 61</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-62">
         <h2><i>Video 62</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-63">
         <h2><i>Video 63</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-64">
         <h2><i>Video 64</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-65">
         <h2><i>Video 65</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-66">
         <h2><i>Video 66</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-67">
         <h2><i>Video 67</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-68">
         <h2><i>Video 68</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-69">
         <h2><i>Video 69</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-70">
         <h2><i>Video 70</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-71">
         <h2><i>Video 71</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-72">
         <h2><i>Video 72</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-73">
         <h2><i>Video 73</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-74">
         <h2><i>Video 74</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-75">
         <h2><i>Video 75</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-76">
         <h2><i>Video 76</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-77">
         <h2><i>Video 77</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-78">
         <h2><i>Video 78</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-79">
         <h2><i>Video 79</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-80">
         <h2><i>Video 80</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-81">
         <h2><i>Video 81</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-82">
         <h2><i>Video 82</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-83">
         <h2><i>Video 83</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-84">
         <h2><i>Video 84</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-85">
         <h2><i>Video 85</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-86">
         <h2><i>Video 86</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-87">
         <h2><i>Video 87</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-88">
         <h2><i>Video 88</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-89">
         <h2><i>Video 89</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-90">
         <h2><i>Video 90</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-91">
         <h2><i>Video 91</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-92">
         <h2><i>Video 92</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-93">
         <h2><i>Video 93</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-94">
         <h2><i>Video 94</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-95">
         <h2><i>Video 95</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-96">
         <h2><i>Video 96</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-97">
         <h2><i>Video 97</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-98">
         <h2><i>Video 98</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-99">
         <h2><i>Video 99</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-100">
         <h2><i>Video 100</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-101">
         <h2><i>Video 101</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-102">
         <h2><i>Video 102</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-103">
         <h2><i>Video 103</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-104">
         <h2><i>Video 104</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-105">
         <h2><i>Video 105</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-106">
         <h2><i>Video 106</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-107">
         <h2><i>Video 107</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-108">
         <h2><i>Video 108</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-109">
         <h2><i>Video 109</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <details>
       <summary class="videos-titulo" id="video-110">
         <h2><i>Video 110</i></h2>
       </summary>
+      <div class="flecha-arriba">
+        <a href="#inicio"
+          ><img src="media/img/deslizar-hacia-arriba.png" alt=""
+        /></a>
+      </div>
     </details>
 
     <script>
