@@ -1,8 +1,0 @@
-{% extends 'home.html' %} {% block content %}
-<h1>Mis categorias</h1>
-<ul>
-  {% for i in categorias %}
-  <li>{{i.id}} - <b>{{i.name}}</b></li>
-  {% endfor %}
-</ul>
-{% endblock content %}
