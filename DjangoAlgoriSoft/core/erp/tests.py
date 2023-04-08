@@ -1,10 +1,11 @@
 from config.wsgi import *
 from core.erp.models import *
 
+#ORM I
 #LISTAR
 
 # select * from tabla
-query=Type.objects.all()
+# query=Type.objects.all()
 # print(query)
 
 #Insertar
@@ -25,5 +26,9 @@ query=Type.objects.all()
 #eliminacion
 #con un try except puedo controlar los errores
 #obtengo el objeto
-t=Type.objects.get(id=1)
-t.delete()
+# t=Type.objects.get(id=1)
+# t.delete()
+
+# ORM II
+# for i in range(5):
+#   Type(name=input('Ingresa el tipo: ')).save()

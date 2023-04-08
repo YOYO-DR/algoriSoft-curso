@@ -10,10 +10,10 @@ SQLITE={
 MYSQL = {
   'default':{
   'ENGINE':'django.db.backends.mysql',
-  'NAME':'db_django_curso', #nombre de la base de datos
-  'USER':'root',
-  'PASSWORD':'root',
-  'HOST':'127.0.0.1', #servidor local o también puede ser 'localhost'
+  'NAME':os.environ.get('DBNAME'),
+  'USER':os.environ.get('DBUSER'),
+  'PASSWORD':os.environ.get('DBPASS'),
+  'HOST':os.environ.get('DBHOST'),
   'PORT':'3306'
   }
 }
