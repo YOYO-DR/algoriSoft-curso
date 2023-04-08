@@ -1,3 +1,7 @@
+#lo ejecuto aqui porque esto no lo ejecuto con el manage.py
+from dotenv import load_dotenv
+load_dotenv('./.env')
+
 from config.wsgi import *
 from core.erp.models import *
 
@@ -30,5 +34,28 @@ from core.erp.models import *
 # t.delete()
 
 # ORM II
-# for i in range(5):
-#   Type(name=input('Ingresa el tipo: ')).save()
+#el __contains es que traigo los objetos que por su columna dicha (en este caso, name) que contenga el 'pre'
+# obj=Type.objects.filter(name__contains='terry')
+#con __icontains es para que ignore las mayusculas y minusculas
+# obj=Type.objects.filter(name__icontains='terry')
+#que inicie con lo que le pase
+# obj=Type.objects.filter(name__startswith='p')
+# que termine con lo que le pase
+# obj=Type.objects.filter(name__endswith='p')
+# que sea exactamente igual, si le pongo iexact, ignorara las mayusculas y minusculas
+# obj=Type.objects.filter(name__exact='presidente')
+# me trae los objetos que tengas almenos uno de los valores que le pase en un arreglo
+# obj=Type.objects.filter(name__in=['viba','hola','yoiner'])
+# puedo contar los objetos que lleguen
+# obj=Type.objects.filter(name__in=['viba','hola','yoiner']).count()
+# con query me trae la consulta sql la cual estoy ejecutando
+# obj=Type.objects.filter(name__contains='pr').query
+# puedo excluir
+# obj=Type.objects.filter(name__endswith='a').exclude(id=5)
+# puedo iterarlos
+
+# esto traeria todos los empleados que tengan cierto id
+# Employee.objects.filter(type_id=1)
+
+# for i in Type.objects.filter(name__endswith='a'):
+  # print(i.name)
