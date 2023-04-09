@@ -68,3 +68,8 @@ print(Category.objects.all())
 print(Product.objects.all())
 
 #Product(name='Yogurt',pvp=1,cate_id=2).save()
+
+# data=['Leche y derivados','Carnes, pescados y huevos','Patatas, legumbres, frutos secos','Verduras y hortalizas','Frutas','Cereales y derivados, azúcar y dulces','Grasas, aceite y mantequilla']
+
+# for i in data:
+#   Category.objects.create(name=i)

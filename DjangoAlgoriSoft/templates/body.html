@@ -1,4 +1,6 @@
 {% extends 'home.html' %}
+{% comment %} Y aqui tambien tengo que ponerlo para los demas template van a heredar y van a necesitar este bloque {% endcomment %}
+{% block head %}{% endblock head %}
 {% block body %}
     <body class="hold-transition layout-top-nav">
     <div class="wrapper">
@@ -32,5 +34,6 @@
         <!-- Footer -->
         {% include 'footer.html' %}
     </div>
+    {% block js %}{% endblock js %}
     </body>
 {% endblock %}
