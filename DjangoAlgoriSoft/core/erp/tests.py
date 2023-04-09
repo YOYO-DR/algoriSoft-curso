@@ -65,3 +65,6 @@ from core.erp.models import *
 #LISTAR
 
 print(Category.objects.all())
+print(Product.objects.all())
+
+#Product(name='Yogurt',pvp=1,cate_id=2).save()
