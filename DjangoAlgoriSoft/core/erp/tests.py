@@ -59,3 +59,9 @@ from core.erp.models import *
 
 # for i in Type.objects.filter(name__endswith='a'):
   # print(i.name)
+
+#con los modelos del proyecto
+
+#LISTAR
+
+print(Category.objects.all())
