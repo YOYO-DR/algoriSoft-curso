@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from core.erp.models import *
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 
 def category_list(request):
@@ -14,6 +16,8 @@ class CategoryListView(ListView):
   #el objecto que tiene las categorias se llama object_list
   template_name= 'category/list.html'
 
+  #esto es un metodo decorador, que po ejemplo puedo hacer una verificacion antes de ejecutar el dispatch u otra funcion, en este caso, no lo dejo entrar a la pagina (GET) hasta que este logueado
+  @method_decorator(login_required)
   def dispatch(self, request, *args,**kwargs):
      #esta funcion maneja como llegan los metodos de las peticiones
     #  if request.method == 'GET':
