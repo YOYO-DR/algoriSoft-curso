@@ -1,8 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from core.erp.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
 
 def category_list(request):
     data={
@@ -17,12 +19,19 @@ class CategoryListView(ListView):
   template_name= 'category/list.html'
 
   #esto es un metodo decorador, que po ejemplo puedo hacer una verificacion antes de ejecutar el dispatch u otra funcion, en este caso, no lo dejo entrar a la pagina (GET) hasta que este logueado
-  @method_decorator(login_required)
+  #@method_decorator(login_required)
+  #con este decorador, le quito la proteccion solo en esta vista, para el metodo post, y va aqui pq el dispatch es el que recibe los metodos del request
+  @method_decorator(csrf_exempt)
   def dispatch(self, request, *args,**kwargs):
      #esta funcion maneja como llegan los metodos de las peticiones
     #  if request.method == 'GET':
     #     return redirect('erp:category_list2')
      return super().dispatch(request, *args, **kwargs)
+  
+  #puedo editar el metodo post, cuando hago una peticion sin el codigo de seguridad, tirara error
+  def post(self, request, *args, **kwargs):
+     data = {'name':'Yoiner'}
+     return JsonResponse(data)
 
   def get_queryset(self):
      #esta funcion es la que hace la consulta la cual se guarda en el object_list, puedo modificarla tambien

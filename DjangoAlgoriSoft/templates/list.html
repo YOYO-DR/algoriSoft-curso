@@ -31,7 +31,7 @@
       </tbody>
     </table>
     <div class="cad-footer">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" id="btnTest">
         <i class="fas fa-plus"></i>
         Nuevo registro
       </button>
@@ -45,6 +45,21 @@
       responsive: true,
       autoWidth: false,
     });
+    $('#btnTest').on('click',function () {
+      $.ajax({
+        url:'{% url 'erp:category_list' %}',
+        type: 'POST',
+        data:{id:1},
+        dataType: 'json'
+    }).done(function (data) { //Este metodo se ejecuta si la peticion se realiza de manera exitosa
+console.log(data);
+    }).fail(function (){ //Este se ejecuta si la peticion tiene algun error
+
+    }).always(function () { //este se ejecuta siempre
+      
+    })
+
+    })
 });
   {% comment %} $(function() {
     $(#data).DataTable({
