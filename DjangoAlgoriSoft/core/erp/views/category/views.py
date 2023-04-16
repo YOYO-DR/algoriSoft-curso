@@ -30,8 +30,14 @@ class CategoryListView(ListView):
   
   #puedo editar el metodo post, cuando hago una peticion sin el codigo de seguridad, tirara error
   def post(self, request, *args, **kwargs):
-     data = {'name':'Yoiner'}
-     return JsonResponse(data)
+    data = {}
+    try:
+      data = Category.objects.get(pk=request.POST['id']).toJSON()
+
+    except Exception as e:
+       data['error']=str(e)
+       
+    return JsonResponse(data)
 
   def get_queryset(self):
      #esta funcion es la que hace la consulta la cual se guarda en el object_list, puedo modificarla tambien
