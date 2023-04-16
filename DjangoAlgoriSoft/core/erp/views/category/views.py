@@ -1,11 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from core.erp.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView,CreateView
 from django.views.decorators.csrf import csrf_exempt
-
+from core.erp.forms import *
 def category_list(request):
     data={
         'title':'Listado de Categorias',
@@ -53,4 +54,15 @@ class CategoryListView(ListView):
     #context['object_list'] = Product.objects.all()
     return context
 
+class CategoryCreateView(CreateView):
+  model = Category
+  form_class = CategoryForm
+  template_name = 'category/create.html'
+  #reverse_lazy retorna la ruta que le pase por en name de las rutas y ponerla en esa variable
+  success_url = reverse_lazy('erp:category_list')
+
+  def get_context_data(self, **kwargs):
+     context = super().get_context_data(**kwargs)
+     context['title']='Creación de una categoria'
+     return context
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
