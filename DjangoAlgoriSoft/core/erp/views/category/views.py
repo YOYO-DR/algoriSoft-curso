@@ -65,4 +65,5 @@ class CategoryCreateView(CreateView):
      context = super().get_context_data(**kwargs)
      context['title']='Creación de una categoria'
      return context
+
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
