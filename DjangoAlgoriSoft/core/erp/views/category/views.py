@@ -65,7 +65,28 @@ class CategoryCreateView(CreateView):
   #reverse_lazy retorna la ruta que le pase por en name de las rutas y ponerla en esa variable
   success_url = reverse_lazy('erp:category_list')
 
-  # def post(self, request,*args, **kwargs):
+  def post(self, request,*args, **kwargs):
+    data = {}
+    try:
+      action=request.POST['action']
+      if action=='add':
+        # form=CategoryForm(request.POST)
+        #asi es lo mismo que arriba, pero es mejor, en tal caso que se envien archivos, eso va en el request.FILES pero con el self.get_form() obtengo todo el formulario
+        form=self.get_form()
+        #ahi ya sobreescribi el metodo save
+        data = form.save()
+        # if form.is_valid():
+        #   form.save()
+        # else:
+        #   data['error']=form.errors
+      else:
+        data['error']='No ha ingresado a ninguna opción'
+    except Exception as e:
+       data['error']=str(e)
+       
+    return JsonResponse(data)
+  
+
   #   print(request.POST)
   #   form=CategoryForm(request.POST)
   #   if form.is_valid():
@@ -83,6 +104,8 @@ class CategoryCreateView(CreateView):
      context['title']='Creación de una categoria'
      context['entity']='Categorias'
      context['list_url']=reverse_lazy('erp:category_list')
+     #para saber que accion va a realizar al post
+     context['action']='add'
      return context
 
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar

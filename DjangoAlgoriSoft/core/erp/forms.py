@@ -42,3 +42,17 @@ class CategoryForm(ModelForm):
             }
             )
         }
+    #puedo hacer lo que hice en la vista, aqui tambien en la funcion save()
+    def save(self,commit=True):
+        data = {}
+        form = super() #obtengo el formulario
+        try:
+            if form.is_valid():
+                form.save()
+            else:
+                #si hay errores, creo la clave error
+                data['error']=form.errors
+        except Exception as e:
+            #por si pasa algun otro error
+            data['errors']=str(e)
+        return data

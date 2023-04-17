@@ -30,7 +30,10 @@
         </ul>
         
       </div>
-      {% endif %} {% csrf_token %} {% for field in form.visible_fields %}
+      {% endif %} {% csrf_token %} 
+      {% comment %} este input lo pongo para saber que accion va a hacer este formularioy le paso la accion que le pase en el get_context_data {% endcomment %}
+      <input type="hidden" name="action" value="{{action}}">
+      {% for field in form.visible_fields %}
       <div class="form-group">
         <label for="">{{field.label}}:</label>
         {{field|add_class:'form-control'|attr:'autocomplete:off'|attr:'autofocus'}}
@@ -62,6 +65,30 @@
       icon:'error'
     })
     {% endif %}
+    $('form').on('submit', function (e){
+      //para que no se ejecute el envio del form
+      e.preventDefault();
+      //esto es jquery, y el this hace referencia al formulario, y con esa funcion, obtengo los datos en forma de diccionario para poder pasarlos en el data
+      var parameters = $(this).serializeArray();
+      // console.log(parameters);
+      $.ajax({
+            url:'{% url 'erp:category_create' %}',
+            type: 'POST',
+            data: parameters,
+            dataType: 'json'
+        }).done(function (data) { //Este metodo se ejecuta si la peticion se realiza de manera exitosa
+    if(!data.hasOwnProperty('error')){ //pregunto si el data NO tiene errores
+//lo regreso a la lista
+location.href = '{{list_url}}'
+//le retorno false para que salga del proceso
+return false;
+    }
+    message_error(data.error);
+        }).fail(function (jqXHR,textStatus,errorThrown){ //Este se ejecuta si la peticion tiene algun error
+  alert(`${textStatus} : ${errorThrown}`)
+        }).always(function () { //este se ejecuta siempre
+        })
+    })
   </script>
 {% endblock js %}
           
