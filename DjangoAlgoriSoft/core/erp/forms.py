@@ -14,7 +14,7 @@ class CategoryForm(ModelForm):
             #atributos del label
             # form.label_attrs={'class':'clase','for':'id-o-valor'}
         #ya fuera del for, busco mi atributo name y le activo el autofocus con True ya que es un atributo booleano
-        self.fields['name'].widget.attrs['autofocus']=True
+        # self.fields['name'].widget.attrs['autofocus']=True
     class Meta:
         model = Category
         fields = '__all__'

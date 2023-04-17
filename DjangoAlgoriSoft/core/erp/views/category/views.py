@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from core.erp.models import *
@@ -50,6 +50,10 @@ class CategoryListView(ListView):
     #con super traigo los datos que ya tiene la clase y agrego lo que quiera
     context = super().get_context_data(**kwargs)
     context['title']='Listado de Categorias'
+    #como tengo una plantilla para las listas, le paso la ruta a donde va a ir el boton
+    context['create_url']=reverse_lazy('erp:category_create')
+    context['entity']='Categorias'
+    context['list_url']=reverse_lazy('erp:category_list')
     #puedo modificar esa clave la cual tiene el object_list
     #context['object_list'] = Product.objects.all()
     return context
@@ -61,9 +65,24 @@ class CategoryCreateView(CreateView):
   #reverse_lazy retorna la ruta que le pase por en name de las rutas y ponerla en esa variable
   success_url = reverse_lazy('erp:category_list')
 
+  # def post(self, request,*args, **kwargs):
+  #   print(request.POST)
+  #   form=CategoryForm(request.POST)
+  #   if form.is_valid():
+  #      form.save()
+  #      return HttpResponseRedirect(self.success_url)
+  #   #esto lo pongo, pq cuando no hay errores, esta variable debe ser None
+  #   self.object = None
+  #   #con esto traigo los valores que ya tiene, en este caso, el titulo, sino lo llamo no utilizara el title que le tengo en la funcion
+  #   context = self.get_context_data(**kwargs)
+  #   context['form']=form
+  #   return render(request, self.template_name,context)
+  # # esta es la forma en como trabaja el post, pero no es necesario hacerlo, nomas se hizo a modo de explicacion
   def get_context_data(self, **kwargs):
      context = super().get_context_data(**kwargs)
      context['title']='Creación de una categoria'
+     context['entity']='Categorias'
+     context['list_url']=reverse_lazy('erp:category_list')
      return context
 
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
