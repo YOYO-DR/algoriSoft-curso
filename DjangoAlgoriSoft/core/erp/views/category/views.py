@@ -4,9 +4,10 @@ from django.urls import reverse_lazy
 from core.erp.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView,CreateView
+from django.views.generic import ListView,CreateView,UpdateView
 from django.views.decorators.csrf import csrf_exempt
 from core.erp.forms import *
+
 def category_list(request):
     data={
         'title':'Listado de Categorias',
@@ -106,6 +107,42 @@ class CategoryCreateView(CreateView):
      context['list_url']=reverse_lazy('erp:category_list')
      #para saber que accion va a realizar al post
      context['action']='add'
+     return context
+
+class CategoryUpdateView(UpdateView):
+  #lo que hace el updateview, obtiene los valores pasandole los valores del post y creando una instacia para obtener los valores del objeto, la cual se guardan en el self.object
+  model = Category
+  form_class = CategoryForm
+  template_name = 'category/create.html'
+  success_url = reverse_lazy('erp:category_list')
+
+  def dispatch(self, request, *args, **kwargs):
+    #asi ya el post trabaja para actualizar el objeto, porque con el get_object() obtengo el objeto a modificar, y asi el get_form ya no seria un tipo "CategoryForm(request.POST)" sino que crea la instancia y deja actualizar "CategoryForm(request.POST,instance=self.object)"
+    self.object = self.get_object()
+    return super().dispatch(request, *args, **kwargs)
+
+  def post(self, request,*args, **kwargs):
+    data = {}
+    try:
+      action=request.POST['action']
+      if action=='edit':
+        #si lo dejo asi, el formulario lanzaria un error pq esta intentando crear un objeto en vez de actualizarlo, porque el self.object estaria en None
+        form=self.get_form()
+        data = form.save()
+      else:
+        data['error']='No ha ingresado a ninguna opción'
+    except Exception as e:
+       data['error']=str(e)
+       
+    return JsonResponse(data)
+
+  def get_context_data(self, **kwargs):
+     context = super().get_context_data(**kwargs)
+     context['title']='Edición de una categoria'
+     context['entity']='Categorias'
+     context['list_url']=reverse_lazy('erp:category_list')
+     #para saber que accion va a realizar al post
+     context['action']='edit'
      return context
 
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar

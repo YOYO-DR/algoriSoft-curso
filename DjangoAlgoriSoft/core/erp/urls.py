@@ -8,5 +8,6 @@ urlpatterns = [
     #path('dos/',mysecondview,name='vista2')
     path('category/list2/',category_list,name='category_list2'),
     path('category/list/',CategoryListView.as_view(),name='category_list'),
-    path('category/add/',CategoryCreateView.as_view(),name='category_create')
+    path('category/add/',CategoryCreateView.as_view(),name='category_create'),
+    path('category/edit/<int:pk>/',CategoryUpdateView.as_view(),name='category_update')
 ]

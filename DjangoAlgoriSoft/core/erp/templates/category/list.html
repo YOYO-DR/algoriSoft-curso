@@ -9,9 +9,9 @@
   <th scope="row">{{c.id}}</th>
   <td>{{c.name}}</td>
   <td>
-    <button class="btn btn-warning btn-xs">
+    <a href="{% url 'erp:category_update' c.id %}" class="btn btn-warning btn-xs">
       <i class="fas fa-edit"></i>
-    </button>
+    </a>
 
     <button class="btn btn-danger btn-xs">
       <i class="fas fa-trash-alt"></i>

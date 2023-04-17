@@ -72,7 +72,9 @@
       var parameters = $(this).serializeArray();
       // console.log(parameters);
       $.ajax({
-            url:'{% url 'erp:category_create' %}',
+            //url:'{% url 'erp:category_create' %}',
+            //de esta forma obtengo la url actual
+            url:window.location.pathname,
             type: 'POST',
             data: parameters,
             dataType: 'json'
