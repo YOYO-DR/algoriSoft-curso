@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from core.erp.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView,CreateView,UpdateView
+from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.views.decorators.csrf import csrf_exempt
 from core.erp.forms import *
 
@@ -144,5 +144,18 @@ class CategoryUpdateView(UpdateView):
      #para saber que accion va a realizar al post
      context['action']='edit'
      return context
+
+class CategoryDeleteView(DeleteView):
+  model = Category
+  template_name = 'category/delete.html'
+  success_url = reverse_lazy('erp:category_list')
+
+  def get_context_data(self, **kwargs):
+     context = super().get_context_data(**kwargs)
+     context['title']='Eliminación de una categoria'
+     context['entity']='Categorias'
+     context['list_url']=reverse_lazy('erp:category_list')
+     return context
+
 
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
