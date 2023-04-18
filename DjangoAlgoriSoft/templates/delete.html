@@ -3,7 +3,7 @@
   <div class="card card-default">
     <div class="card-header">
       <h3 class="card-title">
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-trash"></i>
         {{title}}
       </h3>
     </div>
@@ -55,3 +55,34 @@
   </div>
 </form>
 {% endblock content %}
+{% block js %}
+<script>
+  {% comment %} Puedo no mandarle parametros, ya que solo lo va a borrar, pero al no mandarle parametros, no recibe el token, entonces si quiero hacerlo sin mandar parametor, entonces le pongo el decorador csfr_exempt al dispatch para que no lo necesite {% endcomment %}
+  $('form').on('submit', function (e){
+    //detengo el envio, porque lo hare por ajax
+      e.preventDefault();
+      //obtengo los valores del form y lo convierto a diccionario
+      var parameters = $(this).serializeArray();
+      $.ajax({
+        //le pongo la url actual
+            url:window.location.pathname,
+            type: 'POST',
+            data: parameters,
+            dataType: 'json'
+        }).done(function (data) { //Este metodo se ejecuta si la peticion se realiza de manera exitosa
+    if(!data.hasOwnProperty('error')){ //pregunto si el data NO tiene errores
+//lo regreso a la lista
+location.href = '{{list_url}}'
+//le retorno false para que salga del proceso
+return false;
+    }
+    //si llega a este punto, osea, tiene errores, utilizo mi funcion para mostrarlos en un alert
+    message_error(data.error);
+        }).fail(function (jqXHR,textStatus,errorThrown){ //Este se ejecuta si la peticion tiene algun error
+  alert(`${textStatus} : ${errorThrown}`)
+        }).always(function () { //este se ejecuta siempre
+        })
+    })
+</script>
+
+{% endblock js %}
