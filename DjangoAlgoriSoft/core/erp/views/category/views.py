@@ -23,7 +23,7 @@ class CategoryListView(ListView):
   #esto es un metodo decorador, que po ejemplo puedo hacer una verificacion antes de ejecutar el dispatch u otra funcion, en este caso, no lo dejo entrar a la pagina (GET) hasta que este logueado
   #@method_decorator(login_required)
   #con este decorador, le quito la proteccion solo en esta vista, para el metodo post, y va aqui pq el dispatch es el que recibe los metodos del request
-  @method_decorator(csrf_exempt)
+  @csrf_exempt
   def dispatch(self, request, *args,**kwargs):
      #esta funcion maneja como llegan los metodos de las peticiones
     #  if request.method == 'GET':
@@ -32,14 +32,22 @@ class CategoryListView(ListView):
   
   #puedo editar el metodo post, cuando hago una peticion sin el codigo de seguridad, tirara error
   def post(self, request, *args, **kwargs):
-    data = {}
     try:
-      data = Category.objects.get(pk=request.POST['id']).toJSON()
-
+      #data = Category.objects.get(pk=request.POST['id']).toJSON()
+      #obtengo la acción
+      action = request.POST['action']
+      if action == 'searchdata':
+        #un arreglo pq asi los recibe datatable
+        data = []
+        for i in Category.objects.all():
+          #lo convertimos a diccionario con la función que creamos
+          data.append(i.toJSON())
+      else:
+        data['error']='Ha ocurrido un error'
     except Exception as e:
        data['error']=str(e)
-       
-    return JsonResponse(data)
+    #por defecto, safe siempre esta en True para serializar los datos a json, pero un arreglo no se puede serializar a json, entonces como le vamos a pasar un arreglo, le ponemos el safe como False para poner enviar
+    return JsonResponse(data,safe=False)
 
   def get_queryset(self):
      #esta funcion es la que hace la consulta la cual se guarda en el object_list, puedo modificarla tambien
