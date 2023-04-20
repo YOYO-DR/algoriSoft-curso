@@ -1,9 +1,11 @@
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from core.erp.models import *
-from django.views.generic import ListView,CreateView,UpdateView,DeleteView
+from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
 from django.views.decorators.csrf import csrf_exempt
 from core.erp.forms import *
+
+#es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
 
 # def category_list(request):
 #     data={
@@ -176,5 +178,35 @@ class CategoryDeleteView(DeleteView):
      context['list_url']=reverse_lazy('erp:category_list')
      return context
 
+#esta vista es para trabajar con un formulario cualquiera, en este caso hare como si fuera para crear una categoria, lo mismo que la otra clase pero la diferencia es que la otra es especificamente para crear un registro
+class CategoryFormView(FormView):
+  #por ahora no va a guardar nada, pero si va a verificar las validaciones que tenga
+  form_class = CategoryForm
+  #utilizo el mismo template para la creación
+  template_name = 'category/create.html'
+  success_url = reverse_lazy('erp:category_list')
 
-#es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
+  def form_invalid(self, form):
+    #aqui veo los errores que tenga el formulario
+    print(form.errors)
+    print(form.is_valid()) #esto retornaria false porque el form no es valido
+    return super().form_invalid(form)
+
+  def form_valid(self, form):
+    #este es cuando el formulario es valido
+
+    #me lanzara true pq si es valido por eso entra a esta función
+    print(form.is_valid())
+    print(form)
+    #si quiero guardar el registro con esta vista, ya aqui en la funcion de form_valid, agrego las lineas correspondientes (form.save())
+    return super().form_valid(form)
+
+  def get_context_data(self, **kwargs):
+     context = super().get_context_data(**kwargs)
+     #le pongo una pleca para diferenciarlo
+     context['title']='Form | Creación de una categoria'
+     context['entity']='Categorias'
+     context['list_url']=reverse_lazy('erp:category_list')
+     #para saber que accion va a realizar al post
+     context['action']='add'
+     return context
