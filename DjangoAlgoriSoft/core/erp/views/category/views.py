@@ -1,19 +1,16 @@
-from django.http import JsonResponse,HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from core.erp.models import *
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.views.decorators.csrf import csrf_exempt
 from core.erp.forms import *
 
-def category_list(request):
-    data={
-        'title':'Listado de Categorias',
-        'categories':Category.objects.all()
-    }
-    return render(request, 'category/list.html',data)
+# def category_list(request):
+#     data={
+#         'title':'Listado de Categorias',
+#         'categories':Category.objects.all()
+#     }
+#     return render(request, 'category/list.html',data)
 
 class CategoryListView(ListView):
   model = Category
