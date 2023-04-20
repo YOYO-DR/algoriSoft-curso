@@ -74,17 +74,17 @@ from core.erp.models import *
 # for i in data:
 #   Category.objects.create(name=i)
 
-#ingreso de los 60k registros
-import random
+#ingreso de los 6k registros
+# import random
 
-#creo el arreglos de letras
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# #creo el arreglos de letras
+# letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-for i in range(1,6000):
-    #creo el registro aleatoriamente, k=5 osea de 5 letras
-    name=''.join(random.choices(letters,k=5))
-    #pregunto si existe, si existe creo otro hasta que no exista, guardo y repito
-    while Category.objects.filter(name=name).exists():
-        name = ''.join(random.choices(letters,k=5))
-    Category(name=name).save()
-    print(f'Guardado registro {i}')
+# for i in range(1,6000):
+#     #creo el registro aleatoriamente, k=5 osea de 5 letras
+#     name=''.join(random.choices(letters,k=5))
+#     #pregunto si existe, si existe creo otro hasta que no exista, guardo y repito
+#     while Category.objects.filter(name=name).exists():
+#         name = ''.join(random.choices(letters,k=5))
+#     Category(name=name).save()
+#     print(f'Guardado registro {i}')
