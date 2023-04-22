@@ -27,8 +27,9 @@
           el registro
         </h5>
         <ul>
-          {% comment %} Recorro mis componentes {% endcomment %} {% for field in
-          form %} {% comment %} recorro cada field para mirar si tiene erroes e
+          {% comment %} Recorro mis componentes {% endcomment %} 
+          {% for field in form %} 
+          {% comment %} recorro cada field para mirar si tiene erroes e
           imprimirlos {% endcomment %} {% for error in field.errors %}
           <li>{{error}}</li>
           {% endfor %} {% endfor %}

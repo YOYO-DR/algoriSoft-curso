@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     #Mis apps
     'core.erp',
-    'core.homepage'
+    'core.homepage',
+    'core.login',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#login
+LOGIN_REDIRECT_URL = '/erp/category/list/'
+LOGIN_URL = '/login/'
