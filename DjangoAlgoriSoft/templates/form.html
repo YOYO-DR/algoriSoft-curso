@@ -75,7 +75,7 @@
         icon:'error'
       })
       {% endif %}
-      /*$('form').on('submit', function (e){
+      $('form').on('submit', function (e){
         //para que no se ejecute el envio del form
         e.preventDefault();
         //esto es jquery, y el this hace referencia al formulario, y con esa funcion, obtengo los datos en forma de diccionario para poder pasarlos en el data
@@ -100,6 +100,6 @@
     alert(`${textStatus} : ${errorThrown}`)
           }).always(function () { //este se ejecuta siempre
           })
-      })*/
+      })
 </script>
 {% endblock js %}

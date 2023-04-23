@@ -1,10 +1,10 @@
-from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
-from django.views.generic import FormView
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
-from django.contrib.auth import login
+from django.views.generic import FormView, RedirectView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login,logout
 
 class LoginFormView(LoginView):
   #no le ponemos el form_class porque si inspeccionamos el LoginView ya viene con el form_class del AuthenticationForm
@@ -47,3 +47,13 @@ class LoginFormView2(FormView):
     context = super().get_context_data(**kwargs)
     context['title'] = 'Iniciar sesión'
     return context
+
+class LogoutRedirectView(RedirectView):
+  #le digo a donde lo va a redireccionar cuando cierre la sesión
+  pattern_name = 'login'
+
+  def dispatch(self, request, *args, **kwargs):
+    #como la vista solo redirecciona, entonces en el dispatch aplico el cierre de sesión con la función logout solo pasandole el request
+    logout(request)
+    return super().dispatch(request, *args, **kwargs)
+  # asi esta vista me redirecciona al login y cierra la sesión

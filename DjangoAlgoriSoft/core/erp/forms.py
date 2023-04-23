@@ -59,8 +59,8 @@ class CategoryForm(ModelForm):
     
     def clean(self):
         cleaned = super().clean() #retorna el formulario con los datos y asi podemos hacer verificaciones
-        if len(cleaned['name']) <= 50: #en el cleaned en forma de diccionario
-            raise forms.ValidationError('Validation xxx') #aqui le mando un error que no tiene nada que ver con mis componentes y lo hago con la palabra reservada raise que es para generar ua excepcion manualmente
+        #if len(cleaned['name']) <= 50: #en el cleaned en forma de diccionario
+            #raise forms.ValidationError('Validation xxx') #aqui le mando un error que no tiene nada que ver con mis componentes y lo hago con la palabra reservada raise que es para generar ua excepcion manualmente
         
             # y con la funcion add_error agrego el error a ese componente que estoy verificando, el primer parametro es el componente o input y el segundo el mensaje
             #self.add_error('name','Le faltan caracteres')

@@ -13,7 +13,12 @@
                 <img src="{% static 'media/img/user.png' %}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"> {% if user.is_authenticated %}
+                  {{request.user.username|title}}
+                  {% else %}
+                  Sin iniciar sesión
+                  {% endif %}
+                  </a>
             </div>
         </div>
         <nav class="mt-2">
