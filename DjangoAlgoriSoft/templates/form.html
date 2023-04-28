@@ -51,6 +51,9 @@
           <i class="fas fa-save"></i>
           Guardar registro
         </button>
+        <a href="{{ list_url }}" class="btn btn-danger">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
       </div>
     </div>
   </div>
@@ -69,11 +72,11 @@
         {% for error in form.non_field_errors %}
         errors += '{{error}}\n';
         {% endfor %}
-      Swal.fire({
+        Swal.fire({
         title:'!Error¡',
         text:errors,
         icon:'error'
-      })
+        })
       {% endif %}
       $('form').on('submit', function (e){
         //para que no se ejecute el envio del form
@@ -81,7 +84,13 @@
         //esto es jquery, y el this hace referencia al formulario, y con esa funcion, obtengo los datos en forma de diccionario para poder pasarlos en el data
         var parameters = $(this).serializeArray();
         // console.log(parameters);
-        $.ajax({
+        //le paso la url, lo parametros y la función a realizar si fue correcta la petición
+        submit_with_ajax(window.location.pathname, parameters, function (){
+          location.href = '{{list_url}}'
+        });
+
+
+        /*$.ajax({
               //url:'{% url 'erp:category_create' %}',
               //de esta forma obtengo la url actual
               url:window.location.pathname,
@@ -89,17 +98,18 @@
               data: parameters,
               dataType: 'json'
           }).done(function (data) { //Este metodo se ejecuta si la peticion se realiza de manera exitosa
-      if(!data.hasOwnProperty('error')){ //pregunto si el data NO tiene errores
-  //lo regreso a la lista
-  location.href = '{{list_url}}'
-  //le retorno false para que salga del proceso
-  return false;
-      }
-      message_error(data.error);
-          }).fail(function (jqXHR,textStatus,errorThrown){ //Este se ejecuta si la peticion tiene algun error
-    alert(`${textStatus} : ${errorThrown}`)
-          }).always(function () { //este se ejecuta siempre
-          })
-      })
+          if(!data.hasOwnProperty('error')){ //pregunto si el data NO tiene errores
+          //lo regreso a la lista
+          location.href = '{{list_url}}'
+          //le retorno false para que salga del proceso
+          return false;
+          }
+          message_error(data.error);
+            }).fail(function (jqXHR,textStatus,errorThrown){ //Este se ejecuta si la peticion tiene algun error
+          alert(`${textStatus} : ${errorThrown}`)
+            }).always(function () { //este se ejecuta siempre
+            })*/
+    })
+      
 </script>
 {% endblock js %}
