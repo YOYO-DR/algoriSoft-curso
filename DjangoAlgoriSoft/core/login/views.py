@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView, RedirectView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import login,logout
+import config.settings as settings
 
 class LoginFormView(LoginView):
   #no le ponemos el form_class porque si inspeccionamos el LoginView ya viene con el form_class del AuthenticationForm
@@ -13,7 +14,8 @@ class LoginFormView(LoginView):
   def dispatch(self, request, *args, **kwargs):
     #si ya esta autenticado, lo redirecciono a la vista de category_list
     if request.user.is_authenticated:
-      return redirect('erp:category_list')
+      #se lo pongo por si lo quiero cambiar, solo cambio en el settings
+      return redirect(settings.LOGIN_REDIRECT_URL)
     #de lo contrario, que entre normal al login
     return super().dispatch(request, *args, **kwargs)
 
@@ -27,7 +29,7 @@ class LoginFormView2(FormView):
   form_class = AuthenticationForm
   template_name = 'login.html'
   #si el formulario sale exitoso, lo redirecciono a la vista de las categorias
-  success_url = reverse_lazy('erp:category_form')
+  success_url = reverse_lazy(settings.LOGIN_REDIRECT_URL)
 
   def dispatch(self, request, *args, **kwargs):
     #y pues modifico el metodo dispatch para que solo pueda entrar si no esta logueado

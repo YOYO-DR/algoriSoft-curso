@@ -4,6 +4,8 @@ from core.erp.models import *
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
 from django.views.decorators.csrf import csrf_exempt
 from core.erp.forms import *
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 #es mejor trabajar con las vistas pq al trabajar con funciones, es dificil hacer mantenimiento y más cuando se trabaja con los metodos post, get etc, para eso, las clases ya tiene una forma mas ordenada y limpia para trabajar
 
@@ -22,7 +24,8 @@ class CategoryListView(ListView):
   #esto es un metodo decorador, que po ejemplo puedo hacer una verificacion antes de ejecutar el dispatch u otra funcion, en este caso, no lo dejo entrar a la pagina (GET) hasta que este logueado
   #@method_decorator(login_required)
   #con este decorador, le quito la proteccion solo en esta vista, para el metodo post, y va aqui pq el dispatch es el que recibe los metodos del request
-  @csrf_exempt
+  @method_decorator(csrf_exempt)
+  @method_decorator(login_required) #para que no lo deje entrar a la vista hasta que este registrado, utiliza la variable LOGIN_URL del settings.py, lo pongo en todas mis vistas en el metodo dispatch
   def dispatch(self, request, *args,**kwargs):
      #esta funcion maneja como llegan los metodos de las peticiones
     #  if request.method == 'GET':
@@ -72,6 +75,11 @@ class CategoryCreateView(CreateView):
   template_name = 'category/create.html'
   #reverse_lazy retorna la ruta que le pase por en name de las rutas y ponerla en esa variable
   success_url = reverse_lazy('erp:category_list')
+
+  @method_decorator(login_required)
+  def dispatch(self, request, *args, **kwargs):
+      return super().dispatch(request, *args, **kwargs)
+  
 
   def post(self, request,*args, **kwargs):
     data = {}
@@ -123,6 +131,7 @@ class CategoryUpdateView(UpdateView):
   template_name = 'category/create.html'
   success_url = reverse_lazy('erp:category_list')
 
+  @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     #asi ya el post trabaja para actualizar el objeto, porque con el get_object() obtengo el objeto a modificar, y asi el get_form ya no seria un tipo "CategoryForm(request.POST)" sino que crea la instancia y deja actualizar "CategoryForm(request.POST,instance=self.object)"
     self.object = self.get_object()
@@ -157,6 +166,7 @@ class CategoryDeleteView(DeleteView):
   template_name = 'category/delete.html'
   success_url = reverse_lazy('erp:category_list')
 
+  @method_decorator(login_required)
   def dispatch(self,request, *args, **kwargs):
     self.object = self.get_object()
     return super().dispatch(request, *args, **kwargs)
@@ -185,6 +195,11 @@ class CategoryFormView(FormView):
   #utilizo el mismo template para la creación
   template_name = 'category/create.html'
   success_url = reverse_lazy('erp:category_list')
+
+  @method_decorator(login_required)
+  def dispatch(self, request, *args, **kwargs):
+      return super().dispatch(request, *args, **kwargs)
+  
 
   def form_invalid(self, form):
     #aqui veo los errores que tenga el formulario

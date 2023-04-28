@@ -38,6 +38,8 @@
           <p class="login-box-msg">Sign in to start your session</p>
 
           <form action="." method="post">
+            {% comment %} Si por ejemplo intento entrar a category/list sin loguearme, me mandara al login gracias al decorador, y eso pondra una varibale next en la url, pero si inicio sesión no me manda a esa direccion a la cual iba a entrar, entonces se crea este input para recibir ese valor de next a la vista, y si existe, en vez de mandarlo a LOGIN_REDIRECT_URL que es la de por defecto que le pongo, me manda a la que este en next {% endcomment %}
+            <input type="hidden" name="next" value="{{next}}">
             {% csrf_token %}
             <div class="input-group mb-3">
               {{form.username|add_class:'form-control'|attr:'placeholder:Ingrese su username'|attr:'autocomplete:off'}}
