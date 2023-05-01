@@ -67,3 +67,36 @@ class CategoryForm(ModelForm):
             #eso se agrega en el form.errors que verifico en el html y recorro
 
         return cleaned
+
+class ProductForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+        labels = {
+            'name': 'Nombre'
+        }
+        widgets = {
+            'name':TextInput(
+            attrs={
+            'placeholder':'Ingrese un nombre',
+            }
+            )
+        }
+    # def save(self,commit=True):
+    #     data = {}
+    #     form = super()
+    #     try:
+    #         if form.is_valid():
+    #             form.save()
+    #         else:
+    #             data['errors']=form.errors
+    #     except Exception as e:
+    #         data['errors']=str(e)
+    #     return data
+    
+    def clean(self):
+        cleaned = super().clean() 
+        return cleaned

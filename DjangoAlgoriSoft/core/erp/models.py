@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from core.erp.choices import gender_choices
 from django.forms import model_to_dict
+from config.settings import MEDIA_URL, STATIC_URL
 
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
@@ -23,9 +24,22 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
-    cate = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='product/%Y/%m/%d', null=True, blank=True)
-    pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+    cate = models.ForeignKey(Category, on_delete=models.CASCADE,verbose_name='Categoria')
+    image = models.ImageField(upload_to='product/%Y/%m/%d', null=True, blank=True,verbose_name='Imagen')
+    pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2,verbose_name='Precio')
+
+    # def toJSON(self):
+    #   item = model_to_dict(self)
+    #   item['image']=self.image.url if self.image else ''
+    #   item['cate']=self.cate.name
+    #   return item
+
+    def get_image(self):
+        #si existe la imagen, o bueno, si se subio, le retorno la ruta que debe estar en media url, y le junto el self.image que es el nombre de la imagen
+        if self.image:
+            return f'{MEDIA_URL}{self.image}'
+        #de lo contrario, le retorno una imagen como predeterminada que esta en mis static
+        return f'{STATIC_URL}media/img/empty.png'
 
     def __str__(self):
         return self.name
@@ -83,7 +97,6 @@ class DetSale(models.Model):
         verbose_name = 'Detalle de Venta'
         verbose_name_plural = 'Detalle de Ventas'
         ordering = ['id']
-
 
 # class Type(models.Model):
 #   name = models.CharField(max_length=150,verbose_name='Nombre',unique=True)

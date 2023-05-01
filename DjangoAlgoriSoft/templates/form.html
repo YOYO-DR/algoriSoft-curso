@@ -1,5 +1,6 @@
 {% extends 'layout.html' %} {% load widget_tweaks %} {% block content %}
-<form method="post">
+{% comment %} Para el envio de archivos se pone ese atributo al form {% endcomment %}
+<form method="post" enctype="multipart/form-data"> 
   <div class="card card-default">
     <div class="card-header">
       <h3 class="card-title">
@@ -78,17 +79,22 @@
         icon:'error'
         })
       {% endif %}
-      $('form').on('submit', function (e){
+      /*$('form').on('submit', function (e){
         //para que no se ejecute el envio del form
         e.preventDefault();
         //esto es jquery, y el this hace referencia al formulario, y con esa funcion, obtengo los datos en forma de diccionario para poder pasarlos en el data
         var parameters = $(this).serializeArray();
+        console.log(parameters)
         // console.log(parameters);
         //le paso la url, lo parametros y la función a realizar si fue correcta la petición
-        submit_with_ajax(window.location.pathname, parameters, function (){
+        //le pasamos el titulo y contenido también
+        submit_with_ajax(window.location.pathname,
+        'Guardar categoria',
+        `¿Desea guardar la categoria <b>${parameters[2].value}</b>?`, 
+        parameters, 
+        function (){
           location.href = '{{list_url}}'
-        });
-
+        });*/
 
         /*$.ajax({
               //url:'{% url 'erp:category_create' %}',
@@ -109,7 +115,7 @@
           alert(`${textStatus} : ${errorThrown}`)
             }).always(function () { //este se ejecuta siempre
             })*/
-    })
+    /*})*/
       
 </script>
 {% endblock js %}

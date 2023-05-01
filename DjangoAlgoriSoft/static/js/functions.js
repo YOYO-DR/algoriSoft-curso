@@ -20,12 +20,12 @@ function message_error(obj) {
   });
 }
 
-function submit_with_ajax(url, parameters,callback) {
+function submit_with_ajax(url,title,content, parameters,callback) {
   $.confirm({
     theme: "material", //tipo de tema
-    title: "Confirmación", //titulo de la alerta
+    title: title, //titulo de la alerta
     icon: "fa fa-info", //icono de fontawesome
-    content: "¿Estas seguro de realizar la siguiente acción?", //contenido de la alerta
+    content: content, //contenido de la alerta
     columnClass: "medium", //tamaño, tambien puede ser small
     typeAnimated: true,
     cancelButtonClass: "btn-primary",

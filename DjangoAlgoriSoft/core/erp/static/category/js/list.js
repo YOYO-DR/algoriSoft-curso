@@ -46,7 +46,8 @@ $(function () {
           botones += `<a href="/erp/category/delete/${row.id}" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i>`;
           return botones;
         },
-      }
+      },
+      //la otra modificacion es otro diccionario dentro del arreglo, osea, aqui
     ],
     //esto se ejecuta cuando la tabla se haya cargado
     initComplete: function (settings, json) {},
