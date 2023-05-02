@@ -62,7 +62,8 @@
     //detengo el envio, porque lo hare por ajax
       e.preventDefault();
       //obtengo los valores del form y lo convierto a diccionario
-      var parameters = $(this).serializeArray();
+      //var parameters = $(this).serializeArray();
+      var parameters = new FormData(this);
       console.log(parameters)
       //utilizo mi funcion para confirmar
       submit_with_ajax(window.location.pathname,
