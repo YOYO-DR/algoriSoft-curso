@@ -92,9 +92,9 @@ class ProductForm(ModelForm):
             if form.is_valid():
                 form.save()
             else:
-                data['errors']=form.errors
+                data['error']=form.errors # es la clave error porque el front lo valida asi, y no como "errors"
         except Exception as e:
-            data['errors']=str(e)
+            data['error']=str(e)
         return data
     
     def clean(self):
