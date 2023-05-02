@@ -46,6 +46,8 @@ function submit_with_ajax(url,title,content, parameters,callback) {
             type: "POST",
             data: parameters, //se lo paso por la función
             dataType: "json",
+            processData: false,
+            contentType:false //por defecto estos 2 estan en ture, y modifican los datos que le pase, pero con el FormData ya lo hago y le digo que no procese esos datos
           })
             .done(function (data) {
               //Este metodo se ejecuta si la peticion se realiza de manera exitosa

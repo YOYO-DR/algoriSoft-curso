@@ -79,22 +79,30 @@
         icon:'error'
         })
       {% endif %}
-      /*$('form').on('submit', function (e){
+      $('form').on('submit', function (e){
         //para que no se ejecute el envio del form
         e.preventDefault();
         //esto es jquery, y el this hace referencia al formulario, y con esa funcion, obtengo los datos en forma de diccionario para poder pasarlos en el data
-        var parameters = $(this).serializeArray();
-        console.log(parameters)
+
+        //var parameters = $(this).serializeArray();
+
+        var parameters = new FormData(this);// de esta forma recibe los datos tipo texto y tipo files, y le paso como parametro el formulario la cual el this hace referencia a el
+        
+        /*parameters.forEach(function (value,key){ //como es un diccionario, con el forEach recorro cada valor y su key y lo imprimo para ver
+          console.log(key+" "+value)
+        })*/
         // console.log(parameters);
         //le paso la url, lo parametros y la función a realizar si fue correcta la petición
         //le pasamos el titulo y contenido también
+
         submit_with_ajax(window.location.pathname,
         'Guardar categoria',
-        `¿Desea guardar la categoria <b>${parameters[2].value}</b>?`, 
+        `¿Desea guardar la categoria?`, 
         parameters, 
         function (){
           location.href = '{{list_url}}'
-        });*/
+        });
+      })
 
         /*$.ajax({
               //url:'{% url 'erp:category_create' %}',

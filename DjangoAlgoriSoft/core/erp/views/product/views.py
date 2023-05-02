@@ -51,24 +51,26 @@ class ProductCreateView(CreateView):
       return super().dispatch(request, *args, **kwargs)
   
 
-  # def post(self, request,*args, **kwargs):
-  #   data = {}
-  #   try:
-  #     # aqui solo llega los datos tipo inputs
-  #     print(request.POST)
-  #     # aqui los datos tipo archivos
-  #     print(request.FILES)
-  #     # ya aqui confirmo que si llego la imagen
-  #     action=request.POST['action']
-  #     if action=='add':
-  #       form=self.get_form()
-  #       data = form.save()
-  #     else:
-  #       data['error']='No ha ingresado a ninguna opción'
-  #   except Exception as e:
-  #      data['error']=str(e)
+  def post(self, request,*args, **kwargs): #lo descomento pq vamos  a utilizar ajax
+    data = {}
+    try:
+      # print(request.POST)
+      # print(request.FILES)
+      # aqui solo llega los datos tipo inputs
+      print(request.POST)
+      # aqui los datos tipo archivos
+      print(request.FILES)
+      # ya aqui confirmo que si llego la imagen
+      action=request.POST['action']
+      if action=='add':
+        form=self.get_form()
+        data = form.save()
+      else:
+        data['error']='No ha ingresado a ninguna opción'
+    except Exception as e:
+       data['error']=str(e)
        
-  #   return JsonResponse(data)
+    return JsonResponse(data)
 
   def get_context_data(self, **kwargs):
      context = super().get_context_data(**kwargs)
