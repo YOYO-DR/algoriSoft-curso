@@ -100,3 +100,13 @@ class ProductForm(ModelForm):
     def clean(self):
         cleaned = super().clean() 
         return cleaned
+
+class TestForm(Form):#creo mi propio formulario
+  #el ModelChoiceField es para las opciones, y en el widget le digo que tipo de input sera, en este caso, un select, y ese ModelChoiceField debe ir tambien con el parametro queryset el cual le paso los valores que seran las opciones
+  categories = ModelChoiceField(queryset=Category.objects.all(),widget=Select(attrs={
+      'class':'form-control'
+  }))
+  #le paso un listado vacio porque con ajax lo voy a llenar, y pues es obligatorio pasar ese parametro
+  products = ModelChoiceField(queryset=Product.objects.none(),widget=Select(attrs={
+      'class':'form-control'
+  }))

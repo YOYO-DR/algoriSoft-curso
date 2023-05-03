@@ -1,0 +1,68 @@
+{% extends 'layout.html' %} 
+{% load widget_tweaks %} 
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-plus"></i>
+        {{title}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="">Categorias:</label>
+        {{form.categories}} {% comment %} Pongo el input que cree {% endcomment %}
+      </div>
+      <div class="form-group">
+        <label for="">Productos:</label>
+        {{form.products}}
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock content %} 
+{% block js %}
+<script>
+  //que apenas cargue la pagina se ejecuta esta funcion
+  $(function () {
+    //selecciono el select por nu name y accedo a su eveento change que es cuando se selecciona un valor
+    $('select[name="categories"]').on('change',function (){
+      let id = $(this).val(); //obtengo el id del value
+      let select_products=$('select[name="products"]'); //obtengo el select de product para ponerle los productos
+      let options ='<option value="">-----</option>' //voy a crear el componente para incrustar en el product
+      if(id===''){
+        //que si el id esta vacio, osea no ha seleccionado nada, entonces no haga la petición porque eso seria un error en el servidor, entonces solo le paso la opción vacia y con el return detengo la ejecución para que no pase al ajax
+        select_products.html(options)
+        return false;
+      }
+      $.ajax({
+            url: window.location.pathname, 
+            type: "POST",
+            data: {
+              action:'search_product_id',
+              id:id
+            }, 
+            dataType: "json",
+          })
+            .done(function (data) {
+              if (!data.hasOwnProperty("error")) {
+                //el $.each recorro cada valor del arreglo que le mande desde la vista, y en value va a estar el diccionario de cada uno, el key solo va a contener la posiccion del arreglo
+                $.each(data,function(key,value){
+                  //console.log(`key:${key}, value:${value}`)
+                  options+=`<option value="${value.id}">${value.name}</option>`
+                })
+                return false;
+              }
+              message_error(data.error);
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+              alert(`${textStatus} : ${errorThrown}`);
+            })
+            .always(function () {
+              select_products.html(options); //en el always que se ejecuta siempre, le mando las opciones que cree segun los valores que recibi
+            });
+    })
+  });
+</script>
+{% endblock js %}
