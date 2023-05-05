@@ -42,6 +42,8 @@ class CategoryForm(ModelForm):
             }
             )
         }
+        # le excluyo esos valores porque los pondre yo mismo, y no pongo los date porque como tienen la propiedad auto_now y auto_now_add, django sabe que son campos que se autocompletan
+        exclude = ['user_creation','user_updated']
     #puedo hacer lo que hice en la vista, aqui tambien en la funcion save()
     def save(self,commit=True):
         data = {}

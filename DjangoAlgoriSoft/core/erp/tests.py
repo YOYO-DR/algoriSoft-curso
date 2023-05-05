@@ -88,3 +88,6 @@ from core.erp.models import *
 #         name = ''.join(random.choices(letters,k=5))
 #     Category(name=name).save()
 #     print(f'Guardado registro {i}')
+
+# obj=Category.objects.create(name='Bebidas',user_creation_id=1,user_updated_id=1)
+# print(obj)

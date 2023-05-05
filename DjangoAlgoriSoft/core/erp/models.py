@@ -3,11 +3,27 @@ from datetime import datetime
 from core.erp.choices import gender_choices
 from django.forms import model_to_dict
 from config.settings import MEDIA_URL, STATIC_URL
+from core.models import BaseModel
+from crum import get_current_user
 
-class Category(models.Model):
+class Category(BaseModel):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
     desc = models.CharField(max_length=500, null=True,blank=True,verbose_name='Descripción')
 
+    #si se auto completa con visual, los campos deben quedar asi, no utilizando ":" sino los "=" (error mio que vi)
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        # hasta si necesito algo del request, puedo obtenerlo aqui con crum, y su funcion get_current_request()
+        user = get_current_user()
+        #si el usuario no esta vacio
+        if user is not None:
+          #si existe un pk o id, significa que se esta creando el registro, de lo contrario, se esta actualizando el registro
+          if not self.pk:
+              self.user_creation=user
+          else:
+              self.user_updated=user
+        super(Category, self).save()
+
+        
     def __str__(self):
         return f'{self.name}'
     def toJSON(self):
