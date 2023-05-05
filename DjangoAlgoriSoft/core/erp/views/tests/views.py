@@ -20,9 +20,11 @@ class TestView(TemplateView):
       try:
         action = request.POST['action']
         if action == 'search_product_id':
-          data=[]
+          data=[{"id":'','text':'-'*9}] #como le ponia el primero como rayitas en el html porque no era nada, pero ahora recibe el data desde aqui entonces debo pasarle esa seleccion desde aca, sin id y pues los guiones
           for i in Product.objects.filter(cat_id=request.POST['id']):
-             data.append({'id':i.id, 'name':i.name})
+             #le paso otro valor data a los productos segun la categoria, y hasta en el data puedo pasarle valores que necesite en el front, en este caso la info de la categoria del producto
+             data.append({'id':i.id, 'text':i.name,'data':i.cat.toJSON()}) 
+             #porque asi lo pide el select2 para pasarle los datos
         else:
           data['error']='Ha ocurrido un error'
       except Exception as e:

@@ -9,7 +9,7 @@ class Category(models.Model):
     desc = models.CharField(max_length=500, null=True,blank=True,verbose_name='Descripción')
 
     def __str__(self):
-        return f'Nombre: {self.name}'
+        return f'{self.name}'
     def toJSON(self):
       #podria crear el diccionario manual pero donde tenga muchos atributos seria mala practica, ya django tiene una funcion para ello
       #puedo pasarle un arreglo en el parametro exclude con el nombre de los campos que no quiera que se retornen
