@@ -97,8 +97,8 @@
         //le pasamos el titulo y contenido también
 
         submit_with_ajax(window.location.pathname,
-        'Guardar categoria',
-        `¿Desea guardar la categoria?`, 
+        'Guardar',
+        `¿Desea guardar {{m_confirm}}?`, 
         parameters, 
         function (){
           location.href = '{{list_url}}'

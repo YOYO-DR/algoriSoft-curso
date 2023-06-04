@@ -119,6 +119,7 @@ class CategoryCreateView(CreateView):
      context = super().get_context_data(**kwargs)
      context['title']='Creación de una categoria'
      context['entity']='Categorias'
+     context['m_confirm']='la categoria'
      context['list_url']=reverse_lazy('erp:category_list')
      #para saber que accion va a realizar al post
      context['action']='add'
@@ -156,6 +157,7 @@ class CategoryUpdateView(UpdateView):
      context = super().get_context_data(**kwargs)
      context['title']='Edición de una categoria'
      context['entity']='Categorias'
+     context['m_confirm']='la categoria'
      context['list_url']=reverse_lazy('erp:category_list')
      #para saber que accion va a realizar al post
      context['action']='edit'
