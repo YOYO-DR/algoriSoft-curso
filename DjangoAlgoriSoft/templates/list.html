@@ -34,7 +34,8 @@
         {% block rows %} {% endblock rows %}
       </tbody>
     </table>
-    <div class="cad-footer">
+    <div class="card-footer">
+      {% block bottons_list %}
       <a href="{{create_url}}" class="btn btn-primary" id="btnTest">
         <i class="fas fa-plus"></i>
         Nuevo registro
@@ -42,6 +43,8 @@
       <a href="{{ list_url }}" class="btn btn-success">
         <i class="fas fa-sync"></i> Actualizar
       </a>
+      {% endblock bottons_list %}
+      
     </div>
   </div>
 </div>

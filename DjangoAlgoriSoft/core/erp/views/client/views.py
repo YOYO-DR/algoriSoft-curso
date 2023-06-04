@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
+from core.erp.forms import ClientForm
 
 from core.erp.models import Client
 
@@ -24,6 +25,16 @@ class ClientView(TemplateView):
                 data = []
                 for i in Client.objects.all():
                     data.append(i.toJSON())
+            elif action == 'add':
+                cli = Client( # creo el cliente o registro cliente y le paso cada valor para crealos
+                    names=request.POST['names'],
+                    surnames=request.POST['surnames'],
+                    dni=request.POST['dni'],
+                    date_birthday=request.POST['date_birthday'],
+                    address=request.POST['address'],
+                    gender=request.POST['gender']
+                ).save() # y lo guardo
+
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -35,4 +46,5 @@ class ClientView(TemplateView):
         context['title'] = 'Listado de Clientes'
         context['list_url'] = reverse_lazy('erp:client')
         context['entity'] = 'Clientes'
+        context['form']=ClientForm()
         return context
