@@ -32,7 +32,7 @@ function getData() {
           var buttons =
              '<a href="#" rel="edit" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
           buttons +=
-            '<a href="#" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+            '<a href="#" rel="delete" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
           return buttons;
         },
       },
@@ -77,6 +77,24 @@ $(function () {
      $('select[name="gender"]').val(data.gender.id); // le pongo id porque esa es la opcion y ya el muestra en palabras la opcion
      $("#myModalClient").modal("show");
    })
+     .on('click', 'a[rel="delete"]', function (e) { // le pueso aplicar otro .on pero le agregaria este evento a los botones de eliminar
+       //obtengo los valores de la misma forma
+      var tr = tblClient.cell($(this).closest("td,li")).index(); 
+      var data = tblClient.row(tr.row).data();
+      var parameters = new FormData();
+       parameters.append("action","delete")
+       parameters.append("id",data.id);
+      submit_with_ajax(
+        window.location.pathname,
+        "Eliminar",
+        `¿Desea eliminar el cliente ${data.names}?`,
+        parameters,
+        function () {
+          $("#myModalClient").modal("hide");
+          tblClient.ajax.reload(); // esta es una funcion de datatable, para no recargar toda la pagina
+        }
+      );
+    })
 
   $("form").on("submit", function (e) {
     e.preventDefault();
@@ -88,7 +106,8 @@ $(function () {
       parameters,
       function () {
         $("#myModalClient").modal("hide");
-        tblClient.ajax.reload() // esta es una funcion de datatable, para no recargar toda la pagina
-    });
+        tblClient.ajax.reload(); // esta es una funcion de datatable, para no recargar toda la pagina
+      }
+    );
   });
 });
