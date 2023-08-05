@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from core.erp.forms import TestForm
-from core.erp.models import Product
+from core.erp.models import Category, Product
 
 class TestView(TemplateView):
     template_name='tests.html'
