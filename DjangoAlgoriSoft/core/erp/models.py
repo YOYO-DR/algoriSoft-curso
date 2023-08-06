@@ -29,8 +29,8 @@ class Category(BaseModel):
     def toJSON(self):
       #podria crear el diccionario manual pero donde tenga muchos atributos seria mala practica, ya django tiene una funcion para ello
       #puedo pasarle un arreglo en el parametro exclude con el nombre de los campos que no quiera que se retornen
-      # puedo excluir valores del diccionario que genera el model_to_dict
-      item = model_to_dict(self,exclude=['user_creation','user_updated'])
+      # puedo excluir valores del diccionario que genera el model_to_dict 
+      item = model_to_dict(self, exclude=['user_creation','user_updated'])
       return item
 
     class Meta:

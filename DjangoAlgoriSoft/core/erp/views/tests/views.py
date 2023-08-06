@@ -25,9 +25,18 @@ class TestView(TemplateView):
              #le paso otro valor data a los productos segun la categoria, y hasta en el data puedo pasarle valores que necesite en el front, en este caso la info de la categoria del producto
              data.append({'id':i.id, 'text':i.name,'data':i.cat.toJSON()}) 
              #porque asi lo pide el select2 para pasarle los datos
+        if action=="autocomplete":
+           data=[]
+           # le envio unos 10 registros nada más para no mandarle todo y se vuelva pesado
+           for i in Category.objects.filter(name__icontains=request.POST['term'])[0:10]:
+              item=i.toJSON()
+              # le agrego la clave value porque la necesita el autocomplete
+              item['value']=i.name
+              data.append(item)
         else:
           data['error']='Ha ocurrido un error'
       except Exception as e:
+         data={}
          data['error']=str(e)
          #recordar que como voy a retornar un arreglo o coleccion, el JsonResponse debe tener el safe en False
       return JsonResponse(data,safe=False)
